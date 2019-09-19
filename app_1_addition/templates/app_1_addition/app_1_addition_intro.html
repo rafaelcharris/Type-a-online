@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Esta es la primera parte del estudio.
+    </p>
+    <p>
+        En la pantalla de su computador aparecerán, una a la vez, sumas de cinco
+        números de dos dígitos cada una. Estas sumas son generadas por el computador de manera aleatoria. Usted deberá
+        resolver tantas sumas como pueda en dos periodos de un plazo de 4 minutos cada uno. Al finalizar cada periodo
+        usted verá en la pantalla la cantidad de respuestas correctas e incorrectas. A usted se le pagará 1000 puntos
+        por cada suma correcta en el primer periodo. Al final del primer periodo usted puede enfrentar dos eventos.
+        En el primer evento, con una probabilidad del 50%, es decir, con la misma probabilidad de que al lanzar una
+        moneda, esta salga cara, usted puede quedarse con todos los puntos que ha acumulado o perder la mitad de los
+        puntos. En el segundo evento, con una probabilidad del 50%, es decir, con la misma probabilidad de que al
+        lanzar una moneda, esta salga cara, puede que cada suma correcta en el segundo periodo siga valiendo 1000 puntos, o
+        solo 500 puntos. Esto quiere decir que usted puede verse en una situacion en donde esté en cualquiera de los dos
+        eventos, en ambos, o en ningúno.
+    </p>
+    <p>
+        Para resolver las operaciones, si usted así lo desea, podrá escribir sus cálculos en la hoja en blanco que se
+        encuentra frente a usted. Cuanto mejor sea su desempeño, mayor será su ganancia en esta primera parte. Las
+        ganancias acumuladas en esta parte serán pagadas con seguridad al final del estudio junto con las
+        ganancias de la actividad seleccionada al azar de entre las otras cuatro actividades de la segunda parte.
+    </p>
+    <p>
+        Por cada respuesta correcta en esta actividad a usted recibirá 1000 puntos. Al final del ejercicio,
+        los puntos que constituyen su pago se convertirán a pesos colombianos. Cada punto equivale a 1 peso colombiano.
+    </p>
+    <p>
+        Cuando usted esté listo para iniciar de clic en el botón “Siguiente”
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+
+{% block styles  %}
+    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+{% endblock %}
+

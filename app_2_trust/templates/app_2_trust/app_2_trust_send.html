@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    CONFIANZA
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Usted es el jugador {{ id_in_group }}. Usted tiene {{ Constants.endowment }} fichas.
+    </p>
+    <p>
+        De estas {{Constants.endowment}} fichas, ¿cuantas desea enviar al otro jugador?
+    </p>
+    <p>
+        {{ form.sent_amount }}
+    </p>
+
+
+    {% next_button %}
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    ¡A sumar!
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-20">
+                        <p style="font-size:25px"><b>{{ player.addend_1 }} + {{ player.addend_2 }} + {{ player.addend_3 }} + {{ player.addend_4 }}+ {{ player.addend_5 }} =</b></p>
+                    </div>
+                    <div class="col-sm">
+                        {{ form.answer }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <p>
+                    Esta es la ronda número <b>{{ this_round_index }}</b>.<br>
+                    Por cada respuesta correcta usted ganará <b>{{ piece_rate }}</b> puntos.<br>
+                    Su respuesta anterior fue:
+                    {% if was_correct == "-" %}
+                    <span><b> - </b></span>.
+                    {% elif was_correct == True %}
+                    <span style="color:green"><b> Correcta</b></span>.
+                    {% elif was_correct == False %}
+                    <span style="color:red"><b> Falsa</b></span>.
+                    {% endif %}
+                <br>
+                    Numero de respuestas correctas acumuladas hasta ahora: <b>{{ was_correct_accumulated }}</b>.<br>
+                    Su pago acumulado hasta ahora es: <b>{{ acc_payoff }}</b>.<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    {% next_button %}
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+{% endblock %}

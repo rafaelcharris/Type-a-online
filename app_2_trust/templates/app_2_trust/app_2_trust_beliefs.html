@@ -1,0 +1,56 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    BELIEFS
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <b>Como remitente:</b>
+    </p>
+    <p>
+        Suponga que ud envió {{ sender_belief_if1_option }}. Que cree que haría el otro cabezón?
+    </p>
+    <p>
+        {{ form.sender_belief_if1 }}
+    </p>
+    <p>
+        Ahora, suponga que ud envió {{ sender_belief_if2_option }}. Que cree que haría el otro cabezón?
+    </p>
+    <p>
+        {{ form.sender_belief_if2 }}
+    </p>
+    <p>
+        Sobre el Shock:
+    </p>
+    <p>
+        {{ form.sender_belief_shock }}
+    </p>
+    <p>
+        <b>Como destinatario:</b>
+    </p>
+    <p>
+        Cuantas fichas cree que le envió el otro cabezón?
+    </p>
+    <p>
+        {{ form.receiver_belief }}
+    </p>
+    <p>
+        Sobre el Shock:
+    </p>
+    <p>
+        {{ form.receiver_belief_shock }}
+    </p>
+
+
+
+
+
+    {% next_button %}
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+{% endblock %}

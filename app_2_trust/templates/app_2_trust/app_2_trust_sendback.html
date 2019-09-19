@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    CONFIABILIDAD
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Usted es el jugador {{ id_in_group }}. Usted tiene {{ Constants.endowment }} fichas.
+    </p>
+    <p>
+        Si el otro jugador le envía  {{ sent_1 }} fichas, usted quedaría con {{ if_1_efficiency }} fichas en total. <br>
+        De estas {{ if_1_efficiency }} fichas, ¿cuantas fichas compartiría con el otro jugador?
+    </p>
+    <p>
+        {{ form.sent_back_amount_if1 }}
+    </p>
+    <p>
+        Si el otro jugador le envía  {{ sent_2 }} fichas, usted quedaría con {{ if_2_efficiency }} fichas en total. <br>
+        De estas {{ if_2_efficiency }} fichas, ¿cuantas fichas compartiría con el otro jugador?
+    </p>
+    <p>
+        {{ form.sent_back_amount_if2 }}
+    </p>
+
+
+    {% next_button %}
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+{% endblock %}
