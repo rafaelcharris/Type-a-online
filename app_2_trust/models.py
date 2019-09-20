@@ -64,18 +64,25 @@ class Subsession(BaseSubsession):
             print("[[ APP_2_TRUST ]] - CREATING SESSION - PLAYER_ID_INSUBSESSION ==> ", p.id_in_subsession, " <== ]]")
             #print("[[ APP_2_TRUST ]] - CREATING SESSION - METAROLE ==> ", p.metarole, " <== ]]")
             print("[[ APP_2_TRUST ]] - CREATING SESSION - PVARS.METAROLE ==> ", p.participant.vars['metarole'], " <== ]]")
-            #print("[[ APP_2_TRUST ]] - CREATING SESSION - METAROUND ==> ", g.metaround, " <== ]]")
             print("[[ APP_2_TRUST ]] - CREATING SESSION - ###############################################################")
 
-#    def set_groups_as_r1(self):
-#        self.group_like_round(1)
-#        print("[[ APP_2_TRUST ]] - CREATING SESSION - UNDO_SHUFFLE - GROUP.MATRIX R1 ==> ", self.get_group_matrix(), " <== ]]")
-#        print("[[ APP_2_TRUST ]] - CREATING SESSION - ###############################################################")
-#
-#    def set_groups_as_r2(self):
-#        self.group_like_round(2)
-#        print("[[ APP_2_TRUST ]] - CREATING SESSION - UNDO_SHUFFLE - GROUP.MATRIX R2 ==> ", self.get_group_matrix(), " <== ]]")
-#        print("[[ APP_2_TRUST ]] - CREATING SESSION - ###############################################################")
+    def undo_shuffle(self):
+        self.group_like_round(1)
+
+    def set_payoff_belief(self):
+        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - GROUP.MATRIX R2 ==> ", self.get_group_matrix(), " <== ]]", )
+#        for p in self.get_players():
+#            p1 = self.get_player_by_id(2)
+#            p2 = self.get_player_by_id(1)
+#        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - PLAYER_ID ==> ", P1, " <== ]]",)
+        self.undo_shuffle()
+        #for p in self.get_players():
+        #    p1 = self.get_player_by_id(2)
+        #    p2 = self.get_player_by_id(1)
+        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - GROUP.MATRIX R1 ==> ", self.get_group_matrix(), " <== ]]",)
+        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - ###############################################################")
+
+
 
 
 class Group(BaseGroup):
@@ -93,6 +100,7 @@ class Group(BaseGroup):
 
     #Trust Payoffs
     def set_payoffs(self):
+        #this code could be reduced if I use get_players() "Returns a list of all the groups in the subsession"
         for p in self.get_players():
             if self.round_number == 1:
                 p1 = self.get_player_by_id(1)
@@ -121,33 +129,11 @@ class Group(BaseGroup):
 
         print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - PLAYER_ID_INSUBSESSION ==> ", p.id_in_subsession, " <== ]]")
         print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - P1.TRUST_FINAL_PAYOFF ==> ", p.trust_final_payoff, " <== ]]")
-    print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - ###############################################################")
-
-####    # Beliefs Payoffs
-####    def set_payoff_belief(self): # Here I wanted to shuffle groups as they where in previous rounds to get their places and execute that commented out code below.
-####        #it didnt work because the print showd e the same group matrix as in round one even when asking to use it as in round 2
-####        #
-#####        self.subsession.set_groups_as_r1()
-####        self.set_groups_as_r1()
-####        print("[[ APP_2_TRUST ]] - GROUP/ GROUP.MATRIX_AS_IN_ROUND_1 ==> ", self.subsession.get_group_matrix()," <== ]]")
-#####        for p in self.get_players():
-#####            p1 = self.get_player_by_id(1)
-#####            p2 = self.get_player_by_id(2)
-#####        self.subsession.set_groups_as_r2()
-####        self.set_groups_as_r1()
-####        print("[[ APP_2_TRUST ]] - GROUP/ GROUP.MATRIX_AS_IN_ROUND_2 ==> ", self.subsession.get_group_matrix()," <== ]]")
-####
-####    def set_groups_as_r1(self):
-####        self.subsession.group_like_round(1)
-####        print("[[ APP_2_TRUST ]] - UNDO_SHUFFLE - GROUP.MATRIX R1 ==> ", self.subsession.get_group_matrix(), " <== ]]")
-####        print("[[ APP_2_TRUST ]] - UNDO_SHUFFLE - ###############################################################")
-####
-####    def set_groups_as_r2(self):
-####        self.subsession.group_like_round(2)
-####        print("[[ APP_2_TRUST ]] - UNDO_SHUFFLE - GROUP.MATRIX R2 ==> ", self.subsession.get_group_matrix(), " <== ]]")
-####        print("[[ APP_2_TRUST ]] - UNDO_SHUFFLE - ###############################################################")
+        print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - ###############################################################")
 
 
+    # Beliefs Payoffs
+# save this code for posterity.       print("[[ APP_2_TRUST ]] - BBBBBBBBBBBBBBBBBB - GROUP.MATRIX R2 ==> ", self.get_players()[0].get_others_in_subsession(), " <== ]]",) #  get_others_in_subsession() is a player methodd. So it has to be called on a player object (get_players()[0] wich is a group method)
 class Player(BasePlayer):
 
     metarole = models.BooleanField()
@@ -211,4 +197,8 @@ class Player(BasePlayer):
         ],
     )
 
-
+    pay_sender_belief_if1 = models.BooleanField()
+    pay_sender_belief_if2 = models.BooleanField()
+    pay_sender_belief_shock = models.BooleanField()
+    pay_receiver_belief = models.BooleanField()
+    pay_receiver_belief_shock = models.BooleanField()
