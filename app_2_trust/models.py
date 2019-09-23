@@ -37,6 +37,14 @@ def shifter(m): # https://groups.google.com/forum/#!searchin/otree/perfect$20str
 class Subsession(BaseSubsession):
 
     def creating_session(self):
+
+        #loading treatments: #be sur to change this code to match tratments assigned in additions
+        if self.round_number == 1:
+            treatment = itertools.cycle([1, 2])
+            for p in self.get_players():
+                p.treatment = next(treatment) #this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
+                p.participant.vars['treatment'] = p.treatment #this one is the one to use throught the entire code
+
         if self.round_number == 1:
             # SHUFFLER
             self.session.vars['full_data'] = [i for i in shifter(self.get_group_matrix())]
@@ -44,14 +52,9 @@ class Subsession(BaseSubsession):
             paying_round = random.randint(1, Constants.num_rounds)
             self.session.vars['paying_round'] = paying_round
             metarole = itertools.cycle([True, False]) # The order of roles. True for sender first, False for receiver first
-            #metaround = itertools.cycle([True, False])# The round to be payed. True for first round, False for second.
             for p in self.get_players():
                 p.metarole = next(metarole)
                 p.participant.vars['metarole'] = p.metarole
-#            for g in self.get_groups():
-#                g.metaround = next(metaround)
-#        elif self.round_number == 2:
-#            self.group_randomly(fixed_id_in_group = True)
         #SHUFFLER
         fd = self.session.vars['full_data']
         self.set_group_matrix(fd[self.round_number - 1])
@@ -65,24 +68,6 @@ class Subsession(BaseSubsession):
             #print("[[ APP_2_TRUST ]] - CREATING SESSION - METAROLE ==> ", p.metarole, " <== ]]")
             print("[[ APP_2_TRUST ]] - CREATING SESSION - PVARS.METAROLE ==> ", p.participant.vars['metarole'], " <== ]]")
             print("[[ APP_2_TRUST ]] - CREATING SESSION - ###############################################################")
-
-    def undo_shuffle(self):
-        self.group_like_round(1)
-
-    def set_payoff_belief(self):
-        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - GROUP.MATRIX R2 ==> ", self.get_group_matrix(), " <== ]]", )
-#        for p in self.get_players():
-#            p1 = self.get_player_by_id(2)
-#            p2 = self.get_player_by_id(1)
-#        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - PLAYER_ID ==> ", P1, " <== ]]",)
-        self.undo_shuffle()
-        #for p in self.get_players():
-        #    p1 = self.get_player_by_id(2)
-        #    p2 = self.get_player_by_id(1)
-        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - GROUP.MATRIX R1 ==> ", self.get_group_matrix(), " <== ]]",)
-        print("[[ APP_2_TRUST ]] - SUBSESSION/BELIEF PAYOFF - ###############################################################")
-
-
 
 
 class Group(BaseGroup):
@@ -98,7 +83,6 @@ class Group(BaseGroup):
             yield [[i, j] for i, j in zip(f_items, s_items)]
             s_items = [s_items[-1]] + s_items[:-1]
 
-    #Trust Payoffs
     def set_payoffs(self):
         #this code could be reduced if I use get_players() "Returns a list of all the groups in the subsession"
         for p in self.get_players():
@@ -108,37 +92,98 @@ class Group(BaseGroup):
             elif self.round_number == 2:
                 p1 = self.get_player_by_id(2)
                 p2 = self.get_player_by_id(1)
-        if p1.sent_amount == Constants.send_choices[0]:
-            p1.temp_payoff = Constants.endowment
-            p2.temp_payoff = Constants.endowment
-        elif (p1.sent_amount == Constants.send_choices[1] and p2.sent_back_amount_if1 == True) or (p1.sent_amount == Constants.send_choices[2] and p2.sent_back_amount_if2 == True):
-            p1.temp_payoff = int(((Constants.endowment - p1.sent_amount) + (p1.sent_amount * Constants.factor) + Constants.endowment) / 2)
-            p2.temp_payoff = p1.temp_payoff
-        elif (p1.sent_amount == Constants.send_choices[1] or  p1.sent_amount == Constants.send_choices[2]) and (p2.sent_back_amount_if1 == False or p2.sent_back_amount_if2 == False):
-            p1.temp_payoff = Constants.endowment - p1.sent_amount
-            p2.temp_payoff = Constants.endowment + (p1.sent_amount * 3)
 
-        print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - P1.TEMP.PAYOFF ==> ", self.get_player_by_id(1).temp_payoff, " <== ]]")
-        print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - P2.TEMP.PAYOFF ==> ", self.get_player_by_id(2).temp_payoff, " <== ]]")
+        # trust payoffs
+        if p1.sent_amount == Constants.send_choices[0]:
+            p1.t_temp_payoff = Constants.endowment
+            p2.t_temp_payoff = Constants.endowment
+        elif (p1.sent_amount == Constants.send_choices[1] and p2.sent_back_amount_if1 == True) or (p1.sent_amount == Constants.send_choices[2] and p2.sent_back_amount_if2 == True):
+            p1.t_temp_payoff = int(((Constants.endowment - p1.sent_amount) + (p1.sent_amount * Constants.factor) + Constants.endowment) / 2)
+            p2.t_temp_payoff = p1.t_temp_payoff
+        elif (p1.sent_amount == Constants.send_choices[1] or  p1.sent_amount == Constants.send_choices[2]) and (p2.sent_back_amount_if1 == False or p2.sent_back_amount_if2 == False):
+            p1.t_temp_payoff = Constants.endowment - p1.sent_amount
+            p2.t_temp_payoff = Constants.endowment + (p1.sent_amount * 3)
+
+        print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ROUND NUMBER ==> ", self.round_number, " <== ]]")
+        print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - P1.T.TEMP.PAYOFF ==> ", self.get_player_by_id(1).t_temp_payoff, " <== ]]")
+        print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - P2.T.TEMP.PAYOFF ==> ", self.get_player_by_id(2).t_temp_payoff, " <== ]]")
         print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ###############################################################")
 
-    def trust_final_payoff(self):
-        print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - ROUND_NUMBER ==> ", self.round_number, " <== ]]")
-        for p in self.get_players():
-            p.trust_final_payoff = p.in_round(self.session.vars['paying_round']).temp_payoff
+        # BELIEFS
+#        # belief payoffs (sender)
+#        if p2.sent_back_amount_if1 == p1.sender_belief_if1:
+#            p1.pay_sender_belief_if1 = True
+#        else:
+#            p1.pay_sender_belief_if1 = False
+#        if p2.sent_back_amount_if2 == p1.sender_belief_if2:
+#            p1.pay_sender_belief_if2 = True
+#        else:
+#            p1.pay_sender_belief_if2 = False
+#        if p2.treatment == p1.sender_belief_shock:
+#            p1.pay_sender_belief_shock = True
+#        else:
+#            p1.pay_sender_belief_shock = False
+#
+#        # belief payoffs (receiver)
+#        if p1.sent_amount == p2.receiver_belief:
+#            p2.pay_receiver_belief = True
+#        else:
+#            p2.pay_receiver_belief = False
+#        if p1.treatment == p2.receiver_belief_shock:
+#            p2.pay_receiver_belief_shock = True
+#        else:
+#            p2.pay_receiver_belief_shock = False
 
-        print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - PLAYER_ID_INSUBSESSION ==> ", p.id_in_subsession, " <== ]]")
-        print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - P1.TRUST_FINAL_PAYOFF ==> ", p.trust_final_payoff, " <== ]]")
-        print("[[ APP_2_TRUST ]] - GROUP/TRUST_FINAL_PAYOFF - ###############################################################")
+
+
+        if self.round_number == 1:
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ROUND NUMBER ==> ", self.round_number, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if1 ==> ", self.get_player_by_id(1).pay_sender_belief_if1, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if2 ==> ", self.get_player_by_id(1).pay_sender_belief_if2, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(1).pay_sender_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(2).pay_receiver_belief, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(2).pay_receiver_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - BBBBBBBBBB ==> " " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if1 ==> ", self.get_player_by_id(2).pay_sender_belief_if1, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if2 ==> ", self.get_player_by_id(2).pay_sender_belief_if2, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(2).pay_sender_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(1).pay_receiver_belief, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(1).pay_receiver_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ###############################################################")
+        elif self.round_number == 2:
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ROUND NUMBER ==> ", self.round_number, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if1 ==> ", self.get_player_by_id(2).pay_sender_belief_if1, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if2 ==> ", self.get_player_by_id(2).pay_sender_belief_if2, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(2).pay_sender_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(1).pay_receiver_belief, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(1).pay_receiver_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - BBBBBBBBBB ==> " " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if1 ==> ", self.get_player_by_id(1).pay_sender_belief_if1, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if2 ==> ", self.get_player_by_id(1).pay_sender_belief_if2, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(1).pay_sender_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(2).pay_receiver_belief, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(2).pay_receiver_belief_shock, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ###############################################################")
+
+    def t_final_payoff(self):
+        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF - ROUND_NUMBER ==> ", self.round_number, " <== ]]")
+        for p in self.get_players():
+            p.t_final_payoff = p.in_round(self.session.vars['paying_round']).t_temp_payoff
+
+        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF - PLAYER_ID_INSUBSESSION ==> ", p.id_in_subsession, " <== ]]")
+        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF - P1.T_FINAL_PAYOFF ==> ", p.t_final_payoff, " <== ]]")
+        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF - ###############################################################")
 
 
     # Beliefs Payoffs
-# save this code for posterity.       print("[[ APP_2_TRUST ]] - BBBBBBBBBBBBBBBBBB - GROUP.MATRIX R2 ==> ", self.get_players()[0].get_others_in_subsession(), " <== ]]",) #  get_others_in_subsession() is a player methodd. So it has to be called on a player object (get_players()[0] wich is a group method)
+# save this code for posterity.  print("[[ APP_2_TRUST ]] - BBBBBB - GROUP.MATRIX R2 ==> ", self.get_players()[0].get_others_in_subsession(), " <== ]]",) #  get_others_in_subsession() is a player methodd. So it has to be called on a player object (get_players()[0] wich is a group method)
 class Player(BasePlayer):
 
+    treatment = models.IntegerField()
     metarole = models.BooleanField()
-    temp_payoff = models.IntegerField() # payoff per round of trust
-    trust_final_payoff = models.IntegerField() # final payoff for trust
+
+    #b_temp_payoff = models.IntegerField() # payoff per round of belief
+    #b_final_payoff = models.IntegerField() # final payoff for belief
 
     sent_amount = models.IntegerField(
         choices = Constants.send_choices
@@ -158,7 +203,11 @@ class Player(BasePlayer):
         ],
     )
 
+    t_temp_payoff = models.IntegerField() # payoff per round of trust
+    t_final_payoff = models.IntegerField() # final payoff for trust
+
     #beliefs
+
     sender_belief_if1 = models.BooleanField(
         choices=[
             (False, 'No Reciprocó'),
@@ -175,11 +224,15 @@ class Player(BasePlayer):
 
     sender_belief_shock = models.IntegerField(
         choices=[
-            (0, 'No Shock'),
-            (1, 'Random Shock'),
-            (2, 'Intentional Shock'),
+            (1, 'No Shock'),
+            (2, 'Random Shock'),
+            (3, 'Intentional Shock'),
         ],
     )
+
+    pay_sender_belief_if1 = models.BooleanField()
+    pay_sender_belief_if2 = models.BooleanField()
+    pay_sender_belief_shock = models.BooleanField()
 
     receiver_belief = models.IntegerField(
         choices=[
@@ -191,14 +244,11 @@ class Player(BasePlayer):
 
     receiver_belief_shock = models.IntegerField(
         choices=[
-            (0, 'No Shock'),
-            (1, 'Random Shock'),
-            (2, 'Intentional Shock'),
+            (1, 'No Shock'),
+            (2, 'Random Shock'),
+            (3, 'Intentional Shock'),
         ],
     )
 
-    pay_sender_belief_if1 = models.BooleanField()
-    pay_sender_belief_if2 = models.BooleanField()
-    pay_sender_belief_shock = models.BooleanField()
     pay_receiver_belief = models.BooleanField()
     pay_receiver_belief_shock = models.BooleanField()
