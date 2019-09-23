@@ -110,31 +110,29 @@ class Group(BaseGroup):
         print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ###############################################################")
 
         # BELIEFS
-#        # belief payoffs (sender)
-#        if p2.sent_back_amount_if1 == p1.sender_belief_if1:
-#            p1.pay_sender_belief_if1 = True
-#        else:
-#            p1.pay_sender_belief_if1 = False
-#        if p2.sent_back_amount_if2 == p1.sender_belief_if2:
-#            p1.pay_sender_belief_if2 = True
-#        else:
-#            p1.pay_sender_belief_if2 = False
-#        if p2.treatment == p1.sender_belief_shock:
-#            p1.pay_sender_belief_shock = True
-#        else:
-#            p1.pay_sender_belief_shock = False
-#
-#        # belief payoffs (receiver)
-#        if p1.sent_amount == p2.receiver_belief:
-#            p2.pay_receiver_belief = True
-#        else:
-#            p2.pay_receiver_belief = False
-#        if p1.treatment == p2.receiver_belief_shock:
-#            p2.pay_receiver_belief_shock = True
-#        else:
-#            p2.pay_receiver_belief_shock = False
+        # belief payoffs (sender)
+        if p2.sent_back_amount_if1 == p1.sender_belief_if1:
+            p1.pay_sender_belief_if1 = True
+        else:
+            p1.pay_sender_belief_if1 = False
+        if p2.sent_back_amount_if2 == p1.sender_belief_if2:
+            p1.pay_sender_belief_if2 = True
+        else:
+            p1.pay_sender_belief_if2 = False
+        if p2.participant.vars['treatment'] == p1.sender_belief_shock:
+            p1.pay_sender_belief_shock = True
+        else:
+            p1.pay_sender_belief_shock = False
 
-
+        # belief payoffs (receiver)
+        if p1.sent_amount == p2.receiver_belief:
+            p2.pay_receiver_belief = True
+        else:
+            p2.pay_receiver_belief = False
+        if p1.participant.vars['treatment'] == p2.receiver_belief_shock:
+            p2.pay_receiver_belief_shock = True
+        else:
+            p2.pay_receiver_belief_shock = False
 
         if self.round_number == 1:
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ROUND NUMBER ==> ", self.round_number, " <== ]]")
@@ -143,12 +141,6 @@ class Group(BaseGroup):
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(1).pay_sender_belief_shock, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(2).pay_receiver_belief, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(2).pay_receiver_belief_shock, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - BBBBBBBBBB ==> " " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if1 ==> ", self.get_player_by_id(2).pay_sender_belief_if1, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if2 ==> ", self.get_player_by_id(2).pay_sender_belief_if2, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(2).pay_sender_belief_shock, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(1).pay_receiver_belief, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(1).pay_receiver_belief_shock, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ###############################################################")
         elif self.round_number == 2:
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ROUND NUMBER ==> ", self.round_number, " <== ]]")
@@ -157,12 +149,6 @@ class Group(BaseGroup):
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(2).pay_sender_belief_shock, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(1).pay_receiver_belief, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(1).pay_receiver_belief_shock, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - BBBBBBBBBB ==> " " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if1 ==> ", self.get_player_by_id(1).pay_sender_belief_if1, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_if2 ==> ", self.get_player_by_id(1).pay_sender_belief_if2, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_sender_belief_shock ==> ", self.get_player_by_id(1).pay_sender_belief_shock, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief ==> ", self.get_player_by_id(2).pay_receiver_belief, " <== ]]")
-            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - B.pay_receiver_belief_shock ==> ", self.get_player_by_id(2).pay_receiver_belief_shock, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - ###############################################################")
 
     def t_final_payoff(self):
