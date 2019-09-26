@@ -30,3 +30,7 @@ git reset --hard HEAD^
 git commit -m "el código de los beliefs funciona perfecto. Falta funcion de pagos finales y páginas resumen"
 
 D:\Dropbox\2_CID\Violence_Shocks\Shocks_ProAntiSocial\2_Design\Code\Chocolate_v3
+
+git commit -m "unir consent, addition y trust en el codigo. Bots corren correctamente. Pendiente: Admin, Timers, Antisocial apps"
+git remote add origin https://github.com/felmola/Shocks_Pro_Anti_Social.git
+git push --all
