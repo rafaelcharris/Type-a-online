@@ -10,9 +10,9 @@ class app_1_addition_intro(Page):
         return self.player.round_number == 1
 
     # http://otree.readthedocs.io/en/latest/timeouts.html (timer)
-    def before_next_page(self):
-        self.participant.vars['expiry'] = time.time() + Constants.time_limit
-        #self.subsession.tratamientos()
+    #def before_next_page(self):
+    #    self.participant.vars['expiry'] = time.time() + Constants.time_limit
+    #    #self.subsession.tratamientos()
 
 
 class app_1_addition_task(Page):
@@ -27,13 +27,11 @@ class app_1_addition_task(Page):
             return (
                 {
                     'this_round_index': self.round_number,
-                    'treatment': self.session.config['treatment'],
-                    'piece_rate': self.session.config['piece_rate'],
+                    'treatment': self.player.treatment,
+                    'piece_rate': Constants.piece_rate,
                     'was_correct': "-",
                     'was_correct_accumulated': "-",
                     'acc_payoff': "-",
-                    # 'accumulated_payoff': self.player.accumulated_payoff,
-                    # 'piece_rate': self.player.piece_rate
                 }
             )
         else:
@@ -41,13 +39,11 @@ class app_1_addition_task(Page):
             return (
                 {
                     'this_round_index': self.round_number,
-                    'treatment': self.session.config['treatment'],
-                    'piece_rate': self.session.config['piece_rate'],
-                    #'piece_rate': Constants.piece_rate,
+                    'treatment': self.player.treatment,
+                    'piece_rate': Constants.piece_rate,
                     'was_correct': self.player.in_previous_rounds()[-1].was_correct,
                     'was_correct_accumulated': self.player.acc_was_correct,
                     'acc_payoff': self.player.acc_payoff,
-                    #'piece_rate': self.player.piece_rate
                 }
             )
 
@@ -75,7 +71,7 @@ class app_1_addition_announcement(Page):
 
 
 page_sequence = [
-    #app_1_addition_intro,
+    app_1_addition_intro,
     app_1_addition_task,
     app_1_addition_announcement,
 ]

@@ -1,0 +1,32 @@
+﻿cd D:/Dropbox/1_Personal/Otree/Chocolate_v3
+
+git init
+git status
+git add .
+git commit -m "Message here"
+git status
+git log
+
+git branch	name_of_branch
+git branch
+git checkout name_of_branch
+
+
+
+https://git-scm.com/book/en/v1/Git-Tools-Stashing
+
+git stash save "Name of save"
+git stash list
+git checkout master
+git checkout name_of_branch
+git stash apply
+
+git commit -m "Escribir función de pago belief con shuffle. El shuffle corre cuatro veces"
+
+git stash save "pasar el payoff function a la subsession me corre el shuffle una sola vez"
+git commit -m "pasar el payoff function a la subsession me corre el shuffle una sola vez"
+git reset --hard HEAD^
+
+git commit -m "el código de los beliefs funciona perfecto. Falta funcion de pagos finales y páginas resumen"
+
+D:\Dropbox\2_CID\Violence_Shocks\Shocks_ProAntiSocial\2_Design\Code\Chocolate_v3

@@ -7,6 +7,8 @@ from .models import Constants
 class PlayerBot(Bot):
 
     def play_round(self):
+        if self.round_number == 1:
+            yield pages.app_2_trust_intro
         if self.player.metarole == True:
             yield pages.app_2_trust_send, dict(sent_amount = 2)
             yield pages.app_2_trust_beliefs_sender, dict(sender_belief_if1 = True, sender_belief_if2 = True, sender_belief_shock = 2)
@@ -19,3 +21,4 @@ class PlayerBot(Bot):
             yield pages.app_2_trust_beliefs_sender, dict(sender_belief_if1 = True, sender_belief_if2 = True, sender_belief_shock = 1)
         if self.round_number == 2:
             yield pages.app_2_trust_main_results
+

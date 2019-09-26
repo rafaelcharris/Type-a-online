@@ -15,14 +15,10 @@ SESSION_CONFIGS = [
     {
         'name': 'session_config_1',
         'display_name': 'session_config_1',
-        'num_demo_participants': 4,
-        'app_sequence': ['app_2_trust'],
+        'num_demo_participants': 2,
+        #'app_sequence': ['app_2_trust'],
+        'app_sequence': ['app_0_consent', 'app_1_addition', 'app_2_trust'],
         'use_browser_bots': False,
-        #'app_sequence': ['app_1_addition'],
-        #'piece_rate': 1000,
-        #'shock': 0.2,
-        #'endowment': 10000,
-        #'treatment': 1, # 1: No shock. 2: Random shock. 3: Intentional shock.
     },
 ]
 

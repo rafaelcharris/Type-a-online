@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Bienvenido
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Por favor no presione el boton "Siguiente" sino hasta que se lo indiquen.
+    </p>
+    <p>
+        Por favor preste atención a las instrucciones del investigador.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

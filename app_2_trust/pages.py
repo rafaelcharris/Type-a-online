@@ -2,6 +2,12 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class app_2_trust_intro(Page):
+
+    def is_displayed(self):
+        return self.player.round_number == 1
+
+
 
 class app_2_trust_send(Page):
 
@@ -134,11 +140,11 @@ class app_2_trust_main_results(Page):
 
 
 page_sequence = [
+    app_2_trust_intro,
     app_2_trust_send,
     app_2_trust_sendback,
     app_2_trust_beliefs_sender,
     app_2_trust_beliefs_receiver,
-    #app_2_trust_beliefs,
     wait_trust, #waits for the group partner only by default
     all_wait,
     app_2_trust_main_results,
