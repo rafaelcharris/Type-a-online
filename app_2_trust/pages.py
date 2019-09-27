@@ -136,8 +136,8 @@ class app_2_trust_main_results(Page):
          return self.round_number == Constants.num_rounds
 
     def vars_for_template(self):
-        self.group.t_final_payoff()
-
+        #self.group.t_final_payoff()
+        self.player.t_final_payoff()
 
 page_sequence = [
     app_2_trust_intro,

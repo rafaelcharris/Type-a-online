@@ -161,14 +161,6 @@ class Group(BaseGroup):
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - (BELIEFS-TEMP) ###############################################################")
 
 
-    def t_final_payoff(self):
-        pass
-
-#        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF (BELIEFS - TEMP) - P.T_FINAL_PAYOFF ==> ", p.t_final_payoff, " <== ]]")
-#        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF (BELIEFS - TEMP) - P.B_FINAL_PAYOFF ==> ", p.b_final_payoff, " <== ]]")
-
-
-    # Beliefs Payoffs
 # save this code for posterity.  print("[[ APP_2_TRUST ]] - BBBBBB - GROUP.MATRIX R2 ==> ", self.get_players()[0].get_others_in_subsession(), " <== ]]",) #  get_others_in_subsession() is a player methodd. So it has to be called on a player object (get_players()[0] wich is a group method)
 class Player(BasePlayer):
 
@@ -245,3 +237,13 @@ class Player(BasePlayer):
 
     b_temp_payoff = models.IntegerField() # payoff per round of belief
     b_final_payoff = models.IntegerField() # final payoff for belief
+
+    def t_final_payoff(self):
+
+        print("[[ APP_2_TRUST ]] - GROUP/FINAL PAYOFFS (BELIEF and TRUST) - ROUND_NUMBER ==> ", self.round_number, " <== ]]")
+        self.t_final_payoff = self.in_round(self.session.vars['paying_round']).t_temp_payoff
+        self.b_final_payoff = sum(filter(None, [self.b_temp_payoff for p in self.in_rounds(1, self.round_number)]))
+        print("[[ APP_2_TRUST ]] - GROUP/FINAL_PAYOFFS - PLAYER_ID_INSUBSESSION ==> ", self.id_in_subsession, " <== ]]")
+        print("[[ APP_2_TRUST ]] - GROUP/FINAL_PAYOFFS - P.T_FINAL_PAYOFF ==> ", self.t_final_payoff, " <== ]]")
+        print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF  - P.B_FINAL_PAYOFF ==> ", self.b_final_payoff, " <== ]]")
+

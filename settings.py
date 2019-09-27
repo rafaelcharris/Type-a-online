@@ -15,7 +15,7 @@ SESSION_CONFIGS = [
     {
         'name': 'session_config_1',
         'display_name': 'session_config_1',
-        'num_demo_participants': 4,
+        'num_demo_participants': 30,
         #'app_sequence': ['app_2_trust'],
         'app_sequence': ['app_0_consent', 'app_1_addition', 'app_2_trust'],
         'use_browser_bots': False,
