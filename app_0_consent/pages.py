@@ -12,7 +12,7 @@ class Consent(Page):
     form_fields = ['nombre', 'id_number']
 
     def before_next_page(self):
-        self.player.consent_admin()
+        self.player.report_consent()
 
 
 class NormalWaitPage(WaitPage):

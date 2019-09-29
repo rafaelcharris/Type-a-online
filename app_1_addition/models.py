@@ -144,3 +144,11 @@ class Player(BasePlayer):
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ ACC_PAYOFF ==> ", self.acc_payoff, " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ FINAL_PAYOFF ==> ", self.final_payoff, " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............--------------------------------]")
+
+    def report_addition(self):
+        #self.participant.vars['treatment'] = self.participant.vars['treatment']
+        self.participant.vars['addition_acc_was_correct'] = self.acc_was_correct
+        self.participant.vars['addition_acc_acc_payoff'] = self.acc_payoff
+        self.participant.vars['addition_final_payoff'] = self.final_payoff
+        print("[[ APP_1_ADDITION ]] - PLAYER - CONSENT_ADMIN.............ROUND NUMBER", self.round_number)
+        print("[[ APP_1_ADDITION ]] - PLAYER - CONSENT_ADMIN.............PVARS ARE", self.participant.vars)

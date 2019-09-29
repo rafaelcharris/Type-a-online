@@ -42,15 +42,13 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             treatment = itertools.cycle([1, 2])
             for p in self.get_players():
-                p.treatment = next(treatment) #this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
-                p.participant.vars['treatment'] = p.treatment #this one is the one to use throught the entire code
+                #p.treatment = next(treatment) #this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
+                p.participant.vars['treatment'] = next(treatment) #this one is the one to use throught the entire code
 
         if self.round_number == 1:
             # SHUFFLER
             self.session.vars['full_data'] = [i for i in shifter(self.get_group_matrix())]
-
-            paying_round = random.randint(1, Constants.num_rounds)
-            self.session.vars['paying_round'] = paying_round
+            self.session.vars['paying_round'] = random.randint(1, Constants.num_rounds)
             metarole = itertools.cycle([True, False]) # The order of roles. True for sender first, False for receiver first
             for p in self.get_players():
                 p.metarole = next(metarole)
@@ -164,7 +162,7 @@ class Group(BaseGroup):
 # save this code for posterity.  print("[[ APP_2_TRUST ]] - BBBBBB - GROUP.MATRIX R2 ==> ", self.get_players()[0].get_others_in_subsession(), " <== ]]",) #  get_others_in_subsession() is a player methodd. So it has to be called on a player object (get_players()[0] wich is a group method)
 class Player(BasePlayer):
 
-    treatment = models.IntegerField()
+    #treatment = models.IntegerField()
     metarole = models.BooleanField()
 
     sent_amount = models.IntegerField(
@@ -247,3 +245,11 @@ class Player(BasePlayer):
         print("[[ APP_2_TRUST ]] - GROUP/FINAL_PAYOFFS - P.T_FINAL_PAYOFF ==> ", self.t_final_payoff, " <== ]]")
         print("[[ APP_2_TRUST ]] - GROUP/T_FINAL_PAYOFF  - P.B_FINAL_PAYOFF ==> ", self.b_final_payoff, " <== ]]")
 
+    def report_trust(self):
+        # for the tests
+        self.participant.vars['metarole'] = self.metarole
+        self.participant.vars['paying_round'] = self.session.vars['paying_round']
+        self.participant.vars['t_final_payoff'] = self.t_final_payoff
+        self.participant.vars['b_final_payoff'] = self.b_final_payoff
+        print("[[ APP_1_ADDITION ]] - PLAYER - CONSENT_ADMIN.............ROUND NUMBER", self.round_number)
+        print("[[ APP_1_ADDITION ]] - PLAYER - CONSENT_ADMIN.............PVARS ARE", self.participant.vars)

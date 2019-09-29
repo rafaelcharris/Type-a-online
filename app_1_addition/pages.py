@@ -67,7 +67,8 @@ class app_1_addition_announcement(Page):
             final_payoff = self.player.final_payoff
         )
 
-
+    def before_next_page(self):
+        self.player.report_addition()
 
 
 page_sequence = [

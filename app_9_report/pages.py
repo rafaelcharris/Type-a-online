@@ -3,22 +3,22 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class AdminReport(Page):
+    def is_displayed(self):
+        return False
 
 
-class ResultsWaitPage(WaitPage):
+class the_end(Page):
+    form_model = 'player'
+    form_fields = ['e_mail']
 
-    def after_all_players_arrive(self):
-        pass
+#    def vars_for_template(self):
+#        self.player.report_vars_for_database()
 
-
-class Results(Page):
-    pass
+    def is_displayed(self):
+        return True
 
 
 page_sequence = [
-    MyPage,
-    ResultsWaitPage,
-    Results
+    the_end,
 ]
