@@ -43,3 +43,8 @@ git commit -m "fixed the error on belief payoff function and fixed the problem w
 
 git checkout master
 git merge belief_payoff_function
+
+git branch random_bots
+git checkout random_bots
+
+git commit -m "wrote random bots apparently correct. TODO: Timer in additions, test bots"
