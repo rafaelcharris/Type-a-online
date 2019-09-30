@@ -34,3 +34,9 @@ D:\Dropbox\2_CID\Violence_Shocks\Shocks_ProAntiSocial\2_Design\Code\Chocolate_v3
 git commit -m "unir consent, addition y trust en el codigo. Bots corren correctamente. Pendiente: Admin, Timers, Antisocial apps"
 git remote add origin https://github.com/felmola/Shocks_Pro_Anti_Social.git
 git push --all
+
+git commit -m "created admin report but still preents problems when loading the template -after- they all arrived at the end.
+detected an error on the belief payoff function"
+
+git commit -m "fixed the error on belief payoff function and fixed the problem with the admin template. TODO: random
+answers on the bots and test bot answers"

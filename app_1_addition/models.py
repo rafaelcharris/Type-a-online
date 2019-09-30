@@ -150,5 +150,5 @@ class Player(BasePlayer):
         self.participant.vars['addition_acc_was_correct'] = self.acc_was_correct
         self.participant.vars['addition_acc_acc_payoff'] = self.acc_payoff
         self.participant.vars['addition_final_payoff'] = self.final_payoff
-        print("[[ APP_1_ADDITION ]] - PLAYER - CONSENT_ADMIN.............ROUND NUMBER", self.round_number)
-        print("[[ APP_1_ADDITION ]] - PLAYER - CONSENT_ADMIN.............PVARS ARE", self.participant.vars)
+        print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_ADDITION.............ROUND NUMBER", self.round_number)
+        print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_ADDITION.............PVARS ARE", self.participant.vars)

@@ -8,7 +8,6 @@ class app_2_trust_intro(Page):
         return self.player.round_number == 1
 
 
-
 class app_2_trust_send(Page):
 
     form_model = 'player'
@@ -103,31 +102,10 @@ class wait_trust(WaitPage):
         self.group.set_payoffs()
 
 
-#class app_2_trust_beliefs(Page):
-#
-#    form_model = 'player'
-#    form_fields = ['sender_belief_if1', 'sender_belief_if2', 'sender_belief_shock', 'receiver_belief', 'receiver_belief_shock']
-#
-#    def is_displayed(self):
-#        if self.round_number == 2:
-#            return True
-#        else:
-#            return False
-#
-#    def vars_for_template(self):
-#        return dict(
-#            sender_belief_if1_option = Constants.send_choices[1],
-#            sender_belief_if2_option = Constants.send_choices[2],
-#        )
-
-
 class all_wait(WaitPage):
     wait_for_all_groups = True
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
-
-#    def after_all_players_arrive(self):
-#        self.subsession.set_payoff_belief() # This is where i need to run code one single time (not per group or player) with wait_for_all_groups = True
 
 
 class app_2_trust_main_results(Page):
@@ -136,11 +114,11 @@ class app_2_trust_main_results(Page):
          return self.round_number == Constants.num_rounds
 
     def vars_for_template(self):
-        #self.group.t_final_payoff()
-        self.player.t_final_payoff()
+        self.player.tr_final_payoff()
 
     def before_next_page(self):
         self.player.report_trust()
+
 
 page_sequence = [
     app_2_trust_intro,
