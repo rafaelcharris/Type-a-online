@@ -12,8 +12,8 @@ class the_end(Page):
     form_model = 'player'
     form_fields = ['e_mail']
 
-#    def vars_for_template(self):
-#        self.player.report_vars_for_database()
+    def vars_for_template(self):
+        self.player.report_vars_for_database()
 
     def is_displayed(self):
         return True

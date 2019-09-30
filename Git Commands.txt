@@ -50,3 +50,5 @@ git checkout random_bots
 git commit -m "wrote random bots apparently correct. TODO: Timer in additions, test bots"
 
 git commit -m "wrote iterated names and ids on consent TODO: Timer in additions, test bots"
+
+git commit -m "wrote the code in report to show variables at the end of database. TODO: Same as before. Detected an error in treatments"

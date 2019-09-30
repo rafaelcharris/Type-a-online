@@ -38,7 +38,7 @@ class Subsession(BaseSubsession):
 
     def creating_session(self):
 
-        #loading treatments: #be sur to change this code to match tratments assigned in additions
+        #loading treatments: #be sure to change this code to match treatments assigned in additions
         if self.round_number == 1:
             treatment = itertools.cycle([1, 2])
             for p in self.get_players():
@@ -248,10 +248,25 @@ class Player(BasePlayer):
         print("[[ APP_2_TRUST ]] - PLAYER/T_FINAL_PAYOFF  - P.B_FINAL_PAYOFF ==> ", self.b_final_payoff, " <== ]]")
 
     def report_trust(self):
-        # for the tests
+        # for the admin_report
         self.participant.vars['metarole'] = self.in_round(1).metarole
         self.participant.vars['paying_round'] = self.session.vars['paying_round']
         self.participant.vars['t_final_payoff'] = self.t_final_payoff
         self.participant.vars['b_final_payoff'] = self.b_final_payoff
+
+        # for the tests
+        self.participant.vars['sent_amount'] = self.sent_amount
+        self.participant.vars['receiver_belief'] = self.receiver_belief
+        self.participant.vars['pay_receiver_belief'] = self.pay_receiver_belief
+        self.participant.vars['receiver_belief_shock'] = self.receiver_belief_shock
+        self.participant.vars['pay_receiver_belief_shock'] = self.pay_receiver_belief_shock
+        self.participant.vars['sent_back_amount_if1'] = self.sent_back_amount_if1
+        self.participant.vars['sender_belief_if1'] = self.sender_belief_if1
+        self.participant.vars['pay_sender_belief_if1'] = self.pay_sender_belief_if1
+        self.participant.vars['sent_back_amount_if2'] = self.sent_back_amount_if2
+        self.participant.vars['pay_sender_belief_if2'] = self.pay_sender_belief_if2
+        self.participant.vars['sender_belief_shock'] = self.sender_belief_shock
+        self.participant.vars['pay_sender_belief_shock'] = self.pay_sender_belief_shock
+
         print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_TRUST.............ROUND NUMBER", self.round_number)
         print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_TRUST.............PVARS ARE", self.participant.vars)
