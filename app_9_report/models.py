@@ -56,29 +56,37 @@ class Player(BasePlayer):
 
     e_mail = djmodels.EmailField(verbose_name='Correo Electrónico', validators=[UnalEmailValidator()])
 
-    report_participant_code = models.LongStringField()
-    report_consent_name = models.LongStringField()
-    report_consent_id_number = models.IntegerField()
-    report_treatment = models.IntegerField()
-    report_addition_acc_was_correct = models.IntegerField()
+
+    #vars for report_summary (for participants)
     report_addition_acc_acc_payoff = models.IntegerField()
     report_addition_final_payoff = models.FloatField()
-    report_metarole = models.BooleanField()
-    report_paying_round = models.IntegerField()
-    report_sent_amount = models.IntegerField()
-    report_receiver_belief = models.IntegerField()
-    report_pay_receiver_belief = models.IntegerField()
-    report_receiver_belief_shock = models.IntegerField()
-    report_pay_receiver_belief_shock = models.IntegerField()
-    report_sent_back_amount_if1 = models.BooleanField()
-    report_sender_belief_if1 = models.BooleanField()
-    report_pay_sender_belief_if1 = models.IntegerField()
-    report_sent_back_amount_if2 = models.BooleanField()
-    report_pay_sender_belief_if2 = models.IntegerField()
-    report_sender_belief_shock = models.IntegerField()
-    report_pay_sender_belief_shock = models.IntegerField()
-    report_t_final_payoff = models.IntegerField()
-    report_b_final_payoff = models.IntegerField()
+    #get others here after discussing
+
+
+
+    #report_participant_code = models.LongStringField()
+    #report_consent_name = models.LongStringField()
+    #report_consent_id_number = models.IntegerField()
+    #report_treatment = models.IntegerField()
+    #report_addition_acc_was_correct = models.IntegerField()
+    #report_addition_acc_acc_payoff = models.IntegerField()
+    #report_addition_final_payoff = models.FloatField()
+    #report_metarole = models.BooleanField()
+    #report_paying_round = models.IntegerField()
+    #report_sent_amount = models.IntegerField()
+    #report_receiver_belief = models.IntegerField()
+    #report_pay_receiver_belief = models.IntegerField()
+    #report_receiver_belief_shock = models.IntegerField()
+    #report_pay_receiver_belief_shock = models.IntegerField()
+    #report_sent_back_amount_if1 = models.BooleanField()
+    #report_sender_belief_if1 = models.BooleanField()
+    #report_pay_sender_belief_if1 = models.IntegerField()
+    #report_sent_back_amount_if2 = models.BooleanField()
+    #report_pay_sender_belief_if2 = models.IntegerField()
+    #report_sender_belief_shock = models.IntegerField()
+    #report_pay_sender_belief_shock = models.IntegerField()
+    #report_t_final_payoff = models.IntegerField()
+    #report_b_final_payoff = models.IntegerField()
 
     def report_vars_for_database(self):
         self.report_participant_code = self.participant.code
