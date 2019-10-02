@@ -169,20 +169,24 @@ class Player(BasePlayer):
     metarole = models.BooleanField()
 
     sent_amount = models.IntegerField(
-        choices = Constants.send_choices
+        choices = [
+            (Constants.send_choices[0], 'Enviar 0'),
+            (Constants.send_choices[1], 'Enviar 1'),
+            (Constants.send_choices[2], 'Enviar 2')
+        ]
     )
 
     sent_back_amount_if1 = models.BooleanField(
         choices=[
-            (False, 'No reciprocar'),
-            (True, 'Reciprocar'),
+            (False, 'No trasfiero nada; nos quedamos con:'),
+            (True, 'Trasfiero una parte de mis fichas, nos quedamos con:'),
         ],
     )
 
     sent_back_amount_if2 = models.BooleanField(
         choices=[
-            (False, 'No reciprocar'),
-            (True, 'Reciprocar'),
+            (False, 'No trasfiero nada; nos quedamos con:'),
+            (True, 'Trasfiero una parte de mis fichas, nos quedamos con:'),
         ],
     )
 
@@ -193,23 +197,23 @@ class Player(BasePlayer):
 
     sender_belief_if1 = models.BooleanField(
         choices=[
-            (False, 'No Reciprocó'),
-            (True, 'Si Reciprocó'),
+            (False, 'Se ha quedado con todas las fichas'),
+            (True, 'Me ha trasferido una parte de sus fichas'),
         ],
     )
 
     sender_belief_if2 = models.BooleanField(
         choices=[
-            (False, 'No Reciprocó'),
-            (True, 'Si Reciprocó'),
+            (False, 'Se ha quedado con todas las fichas'),
+            (True, 'Me ha trasferido una parte de sus fichas'),
         ],
     )
 
     sender_belief_shock = models.IntegerField(
         choices=[
-            (1, 'No Shock'),
-            (2, 'Random Shock'),
-            (3, 'Intentional Shock'),
+            (1, 'Creo que sus ganancias acumuladas no se vieron afectadas de ninguna manera'),
+            (2, 'Creo que el 80% de sus ganancias acumuladas fueron destruidas'),
+            (3, 'Creo que el 80% de sus ganancias acumuladas fueron apropiadas por otro participante de otra sesión'),
         ],
     )
 
@@ -219,17 +223,17 @@ class Player(BasePlayer):
 
     receiver_belief = models.IntegerField(
         choices=[
-            (0, '0'),
-            (1, '1'),
-            (2, '2'),
+            (0, '0 Fichas'),
+            (1, '1 Ficha'),
+            (2, '2 Fichas'),
         ],
     )
 
     receiver_belief_shock = models.IntegerField(
         choices=[
-            (1, 'No Shock'),
-            (2, 'Random Shock'),
-            (3, 'Intentional Shock'),
+            (1, 'Creo que sus ganancias acumuladas no se vieron afectadas de ninguna manera'),
+            (2, 'Creo que el 80% de sus ganancias acumuladas fueron destruidas'),
+            (3, 'Creo que el 80% de sus ganancias acumuladas fueron apropiadas por otro participante de otra sesión'),
         ],
     )
 
