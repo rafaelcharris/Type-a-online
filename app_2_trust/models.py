@@ -170,15 +170,15 @@ class Player(BasePlayer):
 
     sent_back_amount_if1 = models.BooleanField(
         choices=[
-            (False, 'No trasfiero nada; nos quedamos con:'),
-            (True, 'Trasfiero una parte de mis fichas, nos quedamos con:'),
+            (False, 'No transfiero nada; nos quedamos con 1 ficha ($4000) para el remitente y 5 fichas ($20000) para mí'),
+            (True, 'Transfiero una parte de mis fichas, nos quedamos con 3 fichas ($12000) para el remitente y 3 fichas ($12000) para mí'),
         ],
     )
 
     sent_back_amount_if2 = models.BooleanField(
         choices=[
-            (False, 'No trasfiero nada; nos quedamos con:'),
-            (True, 'Trasfiero una parte de mis fichas, nos quedamos con:'),
+            (False, 'No transfiero nada; nos quedamos con 0 fichas ($0) para el remitente y 8 fichas ($32000) para mí'),
+            (True, 'Transfiero una parte de mis fichas, nos quedamos con 4 fichas ($16000) para el remitente y 4 fichas ($16000) para mí'),
         ],
     )
 
@@ -190,14 +190,14 @@ class Player(BasePlayer):
     sender_belief_if1 = models.BooleanField(
         choices=[
             (False, 'Se ha quedado con todas las fichas'),
-            (True, 'Me ha trasferido una parte de sus fichas'),
+            (True, 'Me ha transferido una parte de sus fichas'),
         ],
     )
 
     sender_belief_if2 = models.BooleanField(
         choices=[
             (False, 'Se ha quedado con todas las fichas'),
-            (True, 'Me ha trasferido una parte de sus fichas'),
+            (True, 'Me ha transferido una parte de sus fichas'),
         ],
     )
 

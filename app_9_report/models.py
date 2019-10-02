@@ -13,12 +13,12 @@ Your app description
 """
 
 
-class UnalEmailValidator(EmailValidator):
-    def validate_domain_part(self, domain_part):
-        if domain_part != 'unal.edu.co':
-            return False
-        return True
-    message = "Por favor ingrese un correo con dominio @unal.edu.co"
+#class UnalEmailValidator(EmailValidator):
+#    def validate_domain_part(self, domain_part):
+#        if domain_part != 'unal.edu.co':
+#            return False
+#        return True
+#    message = "Por favor ingrese un correo con dominio @unal.edu.co"
 
 
 class Constants(BaseConstants):
@@ -57,10 +57,11 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    e_mail = djmodels.EmailField(verbose_name='Correo Electrónico', validators=[UnalEmailValidator()])
+#    e_mail = djmodels.EmailField(verbose_name='Correo Electrónico', validators=[UnalEmailValidator()])
 
 
     #vars for report_summary (for participants) (they get passed to database as well
+    report_participant_code = models.LongStringField()
     report_addition_acc_was_correct = models.IntegerField()
     report_addition_acc_payoff = models.IntegerField()
     report_addition_final_payoff = models.FloatField()
@@ -68,6 +69,7 @@ class Player(BasePlayer):
     report_paying_round = models.IntegerField()
     report_finalfinal_payoff = models.FloatField()
     #get others here after discussing
+#    report_trust_role = models.LongStringField()
 
     def push_vars_to_report_summary(self):
         self.report_addition_acc_was_correct = self.participant.vars.get('addition_acc_was_correct')
@@ -75,39 +77,42 @@ class Player(BasePlayer):
         self.report_addition_final_payoff = self.participant.vars.get('addition_final_payoff')
         self.report_trust_totalsum_payoff = self.participant.vars.get('trust_totalsum_payoff')
         self.report_finalfinal_payoff = (self.participant.vars.get('addition_final_payoff') + (self.participant.vars.get('trust_totalsum_payoff')) * Constants.trust_token)
-        #more here
+
+#        if
+#        self.report_trust_role
+#        #more here
 
 
 
-    def report_vars_for_database(self):
-        self.report_participant_code = self.participant.code
-        vars_fields = [
-            'participant_code',
-            'consent_name',
-            'consent_id_number',
-            'treatment',
-            'addition_acc_was_correct',
-            'addition_acc_acc_payoff',
-            'addition_final_payoff',
-            'metarole',
-            'paying_round',
-            'sent_amount',
-            'receiver_belief',
-            'pay_receiver_belief',
-            'receiver_belief_shock',
-            'pay_receiver_belief_shock',
-            'sent_back_amount_if1',
-            'sender_belief_if1',
-            'pay_sender_belief_if1',
-            'sent_back_amount_if2',
-            'pay_sender_belief_if2',
-            'sender_belief_shock',
-            'pay_sender_belief_shock',
-            't_final_payoff',
-            'b_final_payoff',
-            'trust_totalsum_payoff'
-        ]
-
-        for field in vars_fields:
-            setattr(self, 'report_{}'.format(field), self.participant.vars.get(field))
+#    def report_vars_for_database(self):
+#        self.report_participant_code = self.participant.code
+#        vars_fields = [
+#            'participant_code',
+#            'consent_name',
+#            'consent_id_number',
+#            'treatment',
+#            'addition_acc_was_correct',
+#            'addition_acc_acc_payoff',
+#            'addition_final_payoff',
+#            'metarole',
+#            'paying_round',
+#            'sent_amount',
+#            'receiver_belief',
+#            'pay_receiver_belief',
+#            'receiver_belief_shock',
+#            'pay_receiver_belief_shock',
+#            'sent_back_amount_if1',
+#            'sender_belief_if1',
+#            'pay_sender_belief_if1',
+#            'sent_back_amount_if2',
+#            'pay_sender_belief_if2',
+#            'sender_belief_shock',
+#            'pay_sender_belief_shock',
+#            't_final_payoff',
+#            'b_final_payoff',
+#            'trust_totalsum_payoff'
+#        ]
+#
+#        for field in vars_fields:
+#            setattr(self, 'report_{}'.format(field), self.participant.vars.get(field))
 
