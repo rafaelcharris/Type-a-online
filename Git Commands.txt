@@ -119,3 +119,11 @@ git commit -m "Changed git commnads again to merge text_from_protiocol to master
 git checkout master
 git merge --no-ff text_from_protocol
 
+py -3.6 -m pip install packagename
+
+git commit -m "Added the timer. Tried to fix timer bots."
+git commit -m "Added the remaining addition problems and changed num_rounds. Fixed bots for 40 rounds. bots still broken"
+
+git commit -m "changed Git commands for mergin timer_for_add to master"
+git checkout master
+git merge --no-ff timer_for_add

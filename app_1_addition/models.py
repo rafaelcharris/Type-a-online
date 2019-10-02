@@ -15,22 +15,22 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'app_2_addition'
     players_per_group = None
-    num_rounds = 4
+    num_rounds = 40
 
     half_way = (num_rounds/2)
     time_limit = 60*4
     shock = 0.2
-    piece_rate = 1000 #this code is in settings.py
+    piece_rate = 1000
 
     addends = [
-        [57, 40, 95, 22, 73], [34, 32, 48, 57, 34], [83, 37, 58, 11, 46], [85, 33, 29, 19, 53], #[93, 10, 98, 87, 50],
-         #[13, 69, 54, 88, 47], [15, 53, 68, 45, 99], [21, 43, 43, 28, 68], [48, 47, 32, 66, 46], [59, 60, 30, 14, 19],
-         #[27, 38, 28, 97, 45], [93, 17, 54, 42, 20], [17, 44, 37, 16, 76], [67, 59, 13, 12, 93], [69, 93, 97, 37, 39],
-         #[53, 97, 10, 85, 38], [60, 95, 64, 14, 49], [77, 62, 51, 87, 26], [23, 73, 80, 29, 83], [14, 77, 90, 46, 69],
-         #[59, 23, 23, 50, 80], [94, 86, 16, 20, 48], [68, 93, 83, 72, 50], [34, 34, 27, 65, 97], [60, 81, 50, 38, 92],
-         #[99, 35, 88, 91, 24], [96, 22, 84, 94, 70], [80, 55, 60, 41, 65], [15, 85, 75, 42, 90], [42, 90, 25, 81, 23],
-         #[22, 20, 99, 81, 22], [56, 22, 18, 33, 33], [30, 85, 23, 52, 29], [49, 36, 49, 13, 92], [10, 86, 96, 21, 77],
-         #[82, 36, 56, 72, 45], [57, 54, 50, 46, 69], [97, 46, 91, 57, 32], [62, 33, 39, 47, 49], [71, 31, 91, 76, 77],
+        [57, 40, 95, 22, 73], [34, 32, 48, 57, 34], [83, 37, 58, 11, 46], [85, 33, 29, 19, 53], [93, 10, 98, 87, 50],
+         [13, 69, 54, 88, 47], [15, 53, 68, 45, 99], [21, 43, 43, 28, 68], [48, 47, 32, 66, 46], [59, 60, 30, 14, 19],
+         [27, 38, 28, 97, 45], [93, 17, 54, 42, 20], [17, 44, 37, 16, 76], [67, 59, 13, 12, 93], [69, 93, 97, 37, 39],
+         [53, 97, 10, 85, 38], [60, 95, 64, 14, 49], [77, 62, 51, 87, 26], [23, 73, 80, 29, 83], [14, 77, 90, 46, 69],
+         [59, 23, 23, 50, 80], [94, 86, 16, 20, 48], [68, 93, 83, 72, 50], [34, 34, 27, 65, 97], [60, 81, 50, 38, 92],
+         [99, 35, 88, 91, 24], [96, 22, 84, 94, 70], [80, 55, 60, 41, 65], [15, 85, 75, 42, 90], [42, 90, 25, 81, 23],
+         [22, 20, 99, 81, 22], [56, 22, 18, 33, 33], [30, 85, 23, 52, 29], [49, 36, 49, 13, 92], [10, 86, 96, 21, 77],
+         [82, 36, 56, 72, 45], [57, 54, 50, 46, 69], [97, 46, 91, 57, 32], [62, 33, 39, 47, 49], [71, 31, 91, 76, 77],
          #[70, 98, 70, 95, 54], [73, 60, 69, 65, 68], [90, 32, 78, 91, 39], [62, 90, 51, 76, 59], [61, 57, 86, 85, 70],
          #[86, 41, 32, 74, 81], [99, 67, 46, 23, 17], [71, 76, 84, 36, 83], [27, 56, 87, 38, 60], [52, 43, 62, 53, 68],
          #[57, 77, 16, 10, 76], [28, 31, 86, 10, 74], [36, 53, 38, 24, 61], [64, 70, 39, 66, 96], [63, 77, 71, 51, 64],
@@ -130,8 +130,8 @@ class Player(BasePlayer):
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ ROUND NUMBER ==> ", self.round_number, " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ PLAYER_ID ==> ", self.id_in_group, " <== ]]]")
 
-        self.acc_was_correct = sum([p.was_correct for p in self.in_all_rounds()])
-        self.acc_payoff = sum([i * Constants.piece_rate for i in [p.was_correct for p in self.in_all_rounds()]]) #this creates a list multiplying every correct '1' times the piece rate and then adds it all
+        self.acc_was_correct = sum(filter(None, [p.was_correct for p in self.in_all_rounds()]))
+        self.acc_payoff = sum([i * Constants.piece_rate for i in [p.was_correct for p in self.in_all_rounds()] if i != None])  # this creates a list multiplying every correct '1' times the piece rate and then adds it all
         #self.acc_payoff = sum([i * self.session.config['piece_rate'] for i in [p.was_correct for p in self.in_all_rounds()]]) #this creates a list multiplying every correct '1' times the piece rate and then adds it all
 
         if self.participant.vars['treatment'] == 1:
