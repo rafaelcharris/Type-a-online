@@ -2,25 +2,35 @@
 {% load otree static %}
 
 {% block title %}
-    CONFIANZA
+    {% if  subsession.round_number  ==  1  %}
+        PRIMERA DECISIÓN
+    {% elif  subsession.round_number  ==  2  %}
+        SEGUNDA DECISIÓN
+    {% endif %}
 {% endblock %}
 
 {% block content %}
 
+        <div class="container" >
+            <button type="button" class="btn btn-info btn-primary btn-block" data-toggle="collapse" data-target="#demo">Pulse aquí para ver nuevamente las instrucciones de la segunda actividad</button>
+            <div id="demo" class="collapse">
+                {% include Constants.instructions %}
+            </div>
+        </div>
+
     <p>
-        Usted es el jugador {{ id_in_group }}. Usted tiene {{ Constants.endowment }} fichas.
-    </p>
-    <p>
-        De estas {{Constants.endowment}} fichas, ¿cuantas desea enviar al otro jugador?
+        El computador decidió, de manera aleatoria, asignarlo primero al rol de <b>remitente</b>. Recuerde que el
+        remitente tiene que indicar si quiere enviar 0, 1 o 2 fichas al destinatario. Cada ficha es equivalente a 2.000
+        COP. Si desea volver a leer las instrucciones de clic en el botón azul que se encuentra en la parte superior de
+        la página. Por favor, seleccione la cantidad de fichas que quiere enviar al destinatario.
     </p>
     <p>
         {{ form.sent_amount }}
     </p>
 
-
     {% next_button %}
 {% endblock %}
 
 {% block styles  %}
-    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+    '<link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

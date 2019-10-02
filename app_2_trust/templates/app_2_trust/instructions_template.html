@@ -1,21 +1,10 @@
-{% extends "global/Page.html" %}
-{% load otree static %}
+{% load otree staticfiles %}
 
-{% block title %}
-    Segunda parte
-{% endblock %}
+<div class="card bg-light instructions">
+    <div class="card-body">
 
-{% block content %}
+<h3> Instrucciones</h3>
 
-    <p>
-        Esta es la segunda parte del estudio. Usted tendrá que tomar dos decisiones. En cada decisión interactuará
-        con una persona diferente de este salón. Ninguna de las personas con las que usted va a interactuar conocerá
-        su identidad, ni usted la de ellas. La cantidad de dinero que puede ganar en esta parte dependerá de sus
-        decisiones y de las decisiones de las personas con la que sea emparejado. Recuerde que sólo se le pagará una
-        decisión. Para esto, el computador, al final de esta parte, sorteará cuál de estas dos decisiones será elegida
-        para pagar. Por esta razón, es importante que piense cuidadosamente sus decisiones porque usted sólo sabrá cuál
-        de ellas será elegida para pagar hasta el final de la segunda parte.
-    </p>
     <p>
         Para la primera decisión, hay un remitente y un destinatario. Antes de empezar le indicaremos si usted actuará
         como remitente o como destinatario.
@@ -137,17 +126,10 @@
         </tbody>
     </table>
 
-    <p>
-        Si tiene alguna duda, por favor levante la mano y un asistente se acercará y lo atenderá. Si no tiene dudas de
-        clic en el botón “Siguiente”. El computador sorteará si a usted le toca el rol de destinatario o remitente para
-        la primera decisión.
-    </p>
 
-    {% next_button %}
-{% endblock %}
-
+</div>
+</div>
 
 {% block styles  %}
     '<link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
-

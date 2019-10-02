@@ -73,4 +73,40 @@ git reset --hard 30586b6a81f7da3e1a073168d9726a3ba222cb12
 to avoind some error when pushing the rolled back branch put:
 git push --all -f
 
-git commit m- "recovered Git Commands.txt from dead_end branch"
+git commit -m "recovered Git Commands.txt from dead_end branch"
+
+git commit -m "Changed text from addition pages"
+git commit -m "Changed text from trust intro"
+git commit -m "Changed text from trust send"
+git commit -m "Changed text from trust receive"
+
+git commit -m "Created page in admin report app to show participants the results"
+git commit -m "Created -some- player variables for displaying"
+git commit -m "Passed those  -some- variables to te template. Deleted treatments on trust. Ony four additions to test"
+
+I want to create a branch (instr-butt) from the current one (text_prot):
+git checkout -b instruction_button text_from_protocol
+
+git commit -m "Pasted the instruction button on send and sendback pages"
+code to merge in a cooler way (preservinghistory) (from tex_prot pull inst_button):
+git checkout text_from_protocol
+git merge --no-ff instruction_button
+
+git checkout -b no_select_addends text_from_protocol
+git commit -m "Created css to no_select addends and changed path"
+
+When i fuck up without commiting just write:
+git reset --hard <name of commit you want to restore>
+
+git commit -m "Changed every reference to sumas_css to css.css"
+git commit -m "Blocked all pages with the css.css except the admin report ones"
+
+git commit -m "Change default language"
+git commit -m "Put conditional for title in trust app depending on round number"
+git commit -m "Changed empezar button. Changed continuar for empezar"
+git commit -m "changed the text in the options for the trust"
+
+git checkout -b total_payoff_trust text_from_protocol
+
+git commit -m "created field trust_totalsum_payoff to add belief and trust and updated summary and admin_report"
+git commit -m "created field for finalfinal_payoff. Added finalfinal_payoff to database, adminreport and summary"

@@ -15,7 +15,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'app_2_addition'
     players_per_group = None
-    num_rounds = 10
+    num_rounds = 4
 
     half_way = (num_rounds/2)
     time_limit = 60*4
@@ -23,8 +23,8 @@ class Constants(BaseConstants):
     piece_rate = 1000 #this code is in settings.py
 
     addends = [
-        [57, 40, 95, 22, 73], [34, 32, 48, 57, 34], [83, 37, 58, 11, 46], [85, 33, 29, 19, 53], [93, 10, 98, 87, 50],
-         [13, 69, 54, 88, 47], [15, 53, 68, 45, 99], [21, 43, 43, 28, 68], [48, 47, 32, 66, 46], [59, 60, 30, 14, 19],
+        [57, 40, 95, 22, 73], [34, 32, 48, 57, 34], [83, 37, 58, 11, 46], [85, 33, 29, 19, 53], #[93, 10, 98, 87, 50],
+         #[13, 69, 54, 88, 47], [15, 53, 68, 45, 99], [21, 43, 43, 28, 68], [48, 47, 32, 66, 46], [59, 60, 30, 14, 19],
          #[27, 38, 28, 97, 45], [93, 17, 54, 42, 20], [17, 44, 37, 16, 76], [67, 59, 13, 12, 93], [69, 93, 97, 37, 39],
          #[53, 97, 10, 85, 38], [60, 95, 64, 14, 49], [77, 62, 51, 87, 26], [23, 73, 80, 29, 83], [14, 77, 90, 46, 69],
          #[59, 23, 23, 50, 80], [94, 86, 16, 20, 48], [68, 93, 83, 72, 50], [34, 34, 27, 65, 97], [60, 81, 50, 38, 92],
@@ -44,7 +44,7 @@ class Subsession(BaseSubsession):
 
         #loading treatments:
         if self.round_number == 1:
-            treatment = itertools.cycle([1, 2, 3])
+            treatment = itertools.cycle([3, 2, 1])
             for p in self.get_players():
                 p.treatment = next(treatment) #this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
                 p.participant.vars['treatment'] = p.treatment #this one is the one to use throught the entire code

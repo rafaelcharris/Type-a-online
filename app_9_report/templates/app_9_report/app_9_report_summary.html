@@ -1,0 +1,72 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    RESUMEN DE LA ACTIVIDAD DE HOY
+{% endblock %}
+
+{% block content %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Resultado de la primera parte</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cantidad de sumas correctas</td>
+                <td>{{ player.report_addition_acc_was_correct }}</td>
+            </tr>
+            <tr>
+                <td>Cantidad de puntos ganados por sumas correctas</td>
+                <td>{{ player.report_addition_acc_payoff }}</td>
+            </tr>
+            <tr>
+                <td>Cantidad final de puntos despues de ser afectado</td>
+                <td>{{ player.report_addition_final_payoff }}</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Resultado de la segunda parte parte</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>El rol sorteado para pagar fue</td>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <td>Su decisión fue</td>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <td>La decisión de la persona con la que usted interactuó fue</td>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <td>Cantidad de creencias que adivinó correctamente</td>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <td>Su ganancia para la segunda parte fue</td>
+                <td>{{ player.report_trust_totalsum_payoff }}</td>
+            </tr>
+            <tr>
+                <td>Su ganancia total del día de hoy es</td>
+                <td>{{ player.report_finalfinal_payoff }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {% next_button %}
+{% endblock %}
+
+
+{% block styles  %}
+    '<link href="{% static "css.css" %}" rel="stylesheet">
+{% endblock %}
+

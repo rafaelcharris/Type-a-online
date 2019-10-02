@@ -2,12 +2,17 @@
 {% load otree static %}
 
 {% block title %}
-    MAIN RESULTS
+
 {% endblock %}
 
 {% block content %}
-
+    <p>
+        Por favor de click en el botón "Siguiente"
+    </p>
     {% next_button %}
 {% endblock %}
 
+{% block styles  %}
+    '<link href="{% static "css.css" %}" rel="stylesheet">
+{% endblock %}
 

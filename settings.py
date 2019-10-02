@@ -15,8 +15,8 @@ SESSION_CONFIGS = [
     {
         'name': 'session_config_1',
         'display_name': 'session_config_1',
-        'num_demo_participants': 4,
-        #'app_sequence': ['app_2_trust'],
+        'num_demo_participants': 2,
+        #'app_sequence': ['app_2_trust', 'app_9_report'],
         'app_sequence': ['app_0_consent', 'app_1_addition', 'app_2_trust', 'app_9_report'],
         'use_browser_bots': True,
     },
@@ -25,7 +25,7 @@ SESSION_CONFIGS = [
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'es'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'

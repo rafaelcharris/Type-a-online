@@ -2,24 +2,26 @@
 {% load otree static %}
 
 {% block title %}
-    ANUNCIO
+    Segunda etapa
 {% endblock %}
 
 {% block content %}
 
     {% if  participant.vars.treatment  ==  1  %}
         <p>
-            Sus ganancias acumuladas <b>NO</b> han sido afectadas.  <b>NO SHOCK</b>.<br><br>
-            Usted había acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene lo mismo.<br>
+            Sus ganancias acumuladas <b>NO</b> han sido afectadas.<br>
+            Su ganancia final en esta primera parte es de <b>{{ acc_payoff }} puntos</b><br>
         </p>
     {% elif  participant.vars.treatment  ==  2  %}
         <p>
-            Sus ganancias acumuladas <b>han</b> sido afectadas. <b>RANDOM</b>.<br>
-            Usted había acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos<br>.
+            Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron destruidas.<br>
+            Usted había acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos.<br>
         </p>
     {% elif  participant.vars.treatment  ==  3  %}
         <p>
-            Sus ganancias acumuladas <b>han</b> sido afectadas. <b>INTENTIONAL</b>.<br>
+            Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron apropiadas por otro
+            participante. Este otro participante ya participó en otra sesión, y al darle la oportunidad de apropiarse
+            o no del 80% de las ganancias de alguien en esta sesión, él o ella decidió hacerlo.<br>
             Usted habia acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos</b>.
             <br>
         </p>
@@ -29,5 +31,5 @@
 {% endblock %}
 
 {% block styles  %}
-    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+    '<link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
