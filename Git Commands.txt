@@ -78,3 +78,6 @@ git commit -m "recovered Git Commands.txt from dead_end branch"
 git commit -m "Changed text from addition pages"
 git commit -m "Changed text from trust intro"
 git commit -m "Changed text from trust send"
+git commit -m "Changed text from trust receive"
+
+git commit -m "Created page in admin report app to show participants the results"
