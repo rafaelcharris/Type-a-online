@@ -15,7 +15,7 @@
     {% elif  participant.vars.treatment  ==  2  %}
         <p>
             Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron destruidas.<br>
-            Usted había acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos<br>.
+            Usted había acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos.<br>
         </p>
     {% elif  participant.vars.treatment  ==  3  %}
         <p>
@@ -31,5 +31,5 @@
 {% endblock %}
 
 {% block styles  %}
-    <link href="{% static "static_sumas/css/style_sumas.css" %}" rel="stylesheet">
+    '<link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
