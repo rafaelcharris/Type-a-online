@@ -2,7 +2,11 @@
 {% load otree static %}
 
 {% block title %}
-    PRIMERA DECISIÓN
+    {% if  subsession.round_number  ==  1  %}
+        PRIMERA DECISIÓN
+    {% elif  subsession.round_number  ==  2  %}
+        SEGUNDA DECISIÓN
+    {% endif %}
 {% endblock %}
 
 {% block content %}
