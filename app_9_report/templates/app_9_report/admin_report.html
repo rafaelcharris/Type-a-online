@@ -12,6 +12,7 @@
             <th class="bg-success"></th>
             <th class="bg-success"></th>
             <th class="bg-success"></th>
+            <th class="bg-success"></th>
         </tr>
         <tr>
             <th>P_code</th>
@@ -25,6 +26,7 @@
             <th>Trust<br>paying_round</th>
             <th>Trust<br>t_final_payoff</th>
             <th>Trust<br>b_final_payoff</th>
+            <th>Trust<br>trust_totalsum_payoff</th>
         </tr>
         {% for row in table_rows %}
         <tr>
@@ -39,6 +41,7 @@
             <td>{{ row.trust_paying_round }}</td>
             <td>{{ row.trust_t_final_payoff }}</td>
             <td>{{ row.trust_b_final_payoff }}</td>
+            <td>{{ row.trust_totalsum_payoff }}</td>
         </tr>
         {% endfor %}
     </table>

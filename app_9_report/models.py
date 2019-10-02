@@ -61,6 +61,7 @@ class Player(BasePlayer):
     report_addition_acc_was_correct = models.IntegerField()
     report_addition_acc_payoff = models.IntegerField()
     report_addition_final_payoff = models.FloatField()
+    report_trust_totalsum_payoff = models.IntegerField()
     report_paying_round = models.IntegerField()
     #get others here after discussing
 
@@ -68,6 +69,7 @@ class Player(BasePlayer):
         self.report_addition_acc_was_correct = self.participant.vars.get('addition_acc_was_correct')
         self.report_addition_acc_payoff = self.participant.vars.get('addition_acc_acc_payoff')
         self.report_addition_final_payoff = self.participant.vars.get('addition_final_payoff')
+        self.report_trust_totalsum_payoff = self.participant.vars.get('trust_totalsum_payoff')
         #more here
 
 
@@ -121,6 +123,7 @@ class Player(BasePlayer):
             'pay_sender_belief_shock',
             't_final_payoff',
             'b_final_payoff',
+            'trust_totalsum_payoff'
         ]
 
         for field in vars_fields:

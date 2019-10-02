@@ -243,6 +243,8 @@ class Player(BasePlayer):
     b_temp_payoff = models.IntegerField() # payoff per round of belief
     b_final_payoff = models.IntegerField() # final payoff for belief
 
+    trust_totalsum_payoff = models.IntegerField() # the sum of beliefs and decisions
+
     def tr_final_payoff(self): #mind this. It gave me an error saying "redeclared t_final_payoff defined above without usage.
         # Apparently fixed my b_final_payoff and
 
@@ -250,9 +252,11 @@ class Player(BasePlayer):
         self.t_final_payoff = self.in_round(self.session.vars['paying_round']).t_temp_payoff
         #self.b_final_payoff = sum(filter(None, [self.b_temp_payoff for p in self.in_rounds(1, self.round_number)]))
         self.b_final_payoff = sum(filter(None, [self.in_round(1).b_temp_payoff, self.in_round(Constants.num_rounds).b_temp_payoff]))
+        self.trust_totalsum_payoff = (self.t_final_payoff + self.b_final_payoff)
         print("[[ APP_2_TRUST ]] - PLAYER/FINAL_PAYOFFS - PLAYER_ID_INSUBSESSION ==> ", self.id_in_subsession, " <== ]]")
         print("[[ APP_2_TRUST ]] - PLAYER/FINAL_PAYOFFS - P.T_FINAL_PAYOFF ==> ", self.t_final_payoff, " <== ]]")
         print("[[ APP_2_TRUST ]] - PLAYER/T_FINAL_PAYOFF  - P.B_FINAL_PAYOFF ==> ", self.b_final_payoff, " <== ]]")
+        print("[[ APP_2_TRUST ]] - PLAYER/T_FINAL_PAYOFF  - P.TRUST_TOTALSUM_PAYOFF ==> ", self.trust_totalsum_payoff, " <== ]]")
 
     def report_trust(self):
         # for the admin_report
@@ -260,6 +264,7 @@ class Player(BasePlayer):
         self.participant.vars['paying_round'] = self.session.vars['paying_round']
         self.participant.vars['t_final_payoff'] = self.t_final_payoff
         self.participant.vars['b_final_payoff'] = self.b_final_payoff
+        self.participant.vars['trust_totalsum_payoff'] = self.trust_totalsum_payoff
 
         # for the tests
         self.participant.vars['sent_amount'] = self.sent_amount
