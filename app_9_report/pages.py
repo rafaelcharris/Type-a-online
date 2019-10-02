@@ -8,6 +8,11 @@ class AdminReport(Page):
         return False
 
 
+class app_9_report_summary(Page):
+    def vars_for_template(self):
+        self.player.push_vars_to_report_summary()
+
+
 class the_end(Page):
     form_model = 'player'
     form_fields = ['e_mail']
@@ -20,5 +25,6 @@ class the_end(Page):
 
 
 page_sequence = [
+    app_9_report_summary,
     the_end,
 ]

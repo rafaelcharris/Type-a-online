@@ -58,10 +58,17 @@ class Player(BasePlayer):
 
 
     #vars for report_summary (for participants)
-    report_addition_acc_acc_payoff = models.IntegerField()
+    report_addition_acc_was_correct = models.IntegerField()
+    report_addition_acc_payoff = models.IntegerField()
     report_addition_final_payoff = models.FloatField()
+    report_paying_round = models.IntegerField()
     #get others here after discussing
 
+    def push_vars_to_report_summary(self):
+        self.report_addition_acc_was_correct = self.participant.vars.get('addition_acc_was_correct')
+        self.report_addition_acc_payoff = self.participant.vars.get('addition_acc_acc_payoff')
+        self.report_addition_final_payoff = self.participant.vars.get('addition_final_payoff')
+        #more here
 
 
     #report_participant_code = models.LongStringField()

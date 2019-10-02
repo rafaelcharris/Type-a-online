@@ -38,14 +38,6 @@ class Subsession(BaseSubsession):
 
     def creating_session(self):
 
-        #########################################################################################
-        #loading treatments: #be sur to change this code to match tratments assigned in additions
-        if self.round_number == 1:
-            treatment = itertools.cycle([1, 2])
-            for p in self.get_players():
-                #p.treatment = next(treatment) #this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
-                p.participant.vars['treatment'] = next(treatment) #this one is the one to use throught the entire code
-
         if self.round_number == 1:
             # SHUFFLER
             self.session.vars['full_data'] = [i for i in shifter(self.get_group_matrix())]

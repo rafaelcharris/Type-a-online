@@ -11,21 +11,27 @@
         <thead>
             <tr>
                 <th scope="col">Resultado de la primera parte</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Cantidad de puntos ganados por sumas correctas</td>
-                <td>XXX</td>
+                <td>Cantidad de sumas correctas</td>
+                <td>{{ player.report_addition_acc_was_correct }}</td>
             </tr>
             <tr>
-                <td>Cantidad final de puntos</td>
-                <td>XXX</td>
+                <td>Cantidad de puntos ganados por sumas correctas</td>
+                <td>{{ player.report_addition_acc_payoff }}</td>
+            </tr>
+            <tr>
+                <td>Cantidad final de puntos despues de ser afectado</td>
+                <td>{{ player.report_addition_final_payoff }}</td>
             </tr>
         </tbody>
         <thead>
             <tr>
                 <th scope="col">Resultado de la segunda parte parte</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
