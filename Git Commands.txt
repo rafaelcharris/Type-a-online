@@ -94,3 +94,9 @@ git merge --no-ff instruction_button
 
 git checkout -b no_select_addends text_from_protocol
 git commit -m "Created css to no_select addends and changed path"
+
+When i fuck up without commiting just write:
+git reset --hard <name of commit you want to restore>
+
+git commit -m "Changed every reference to sumas_css to css.css"
+
