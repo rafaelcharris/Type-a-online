@@ -2,32 +2,43 @@
 {% load otree static %}
 
 {% block title %}
-    BELIEFS
+    PRIMERA DECISIÓN
 {% endblock %}
 
 {% block content %}
 
     <p>
-        <b>Como remitente:</b>
+        Ahora nos gustaría darle la oportunidad de obtener unos cuantos pesos más. Queremos que declare sus expectativas
+        sobre el comportamiento de la persona con la cual ha sido emparejado.
     </p>
     <p>
-        Suponga que ud envió {{ sender_belief_if1_option }}. Que cree que haría el otro cabezón?
+        Por cada respuesta correcta, usted recibirá $500 pesos. El resultado de estas expectativas siempre se pagará,
+        incluso, cuando no salga sorteado el rol de remitente para el pago.
+    </p>
+    <p>
+        Suponga que haya enviado 1 ficha al destinatario (puede que sea lo que efectivamente hizo), ¿cree que el
+        destinatario al que fue asignado le haya trasferido una parte de sus fichas, o bien que se haya quedado con
+        todas las fichas que tenía?
     </p>
     <p>
         {{ form.sender_belief_if1 }}
     </p>
     <p>
-        Ahora, suponga que ud envió {{ sender_belief_if2_option }}. Que cree que haría el otro cabezón?
+        Suponga que haya enviado 2 fichas al destinatario (puede que sea lo que efectivamente hizo), ¿cree que el
+        destinatario le haya trasferido una parte de sus fichas, o bien que se haya quedado con todas las fichas que
+        tenía?
     </p>
     <p>
         {{ form.sender_belief_if2 }}
     </p>
     <p>
-        Sobre el Shock:
+        ¿Cuál de los tres eventos posibles que se podían enfrentar en la primera parte de la actividad cree usted que
+        el destinatario con el que interactuó realmente enfrentó?
     </p>
     <p>
         {{ form.sender_belief_shock }}
     </p>
+
     {% next_button %}
 {% endblock %}
 

@@ -2,21 +2,20 @@
 {% load otree static %}
 
 {% block title %}
-    CONFIANZA
+    PRIMERA DECISIÓN
 {% endblock %}
 
 {% block content %}
 
     <p>
-        Usted es el jugador {{ id_in_group }}. Usted tiene {{ Constants.endowment }} fichas.
-    </p>
-    <p>
-        De estas {{Constants.endowment}} fichas, ¿cuantas desea enviar al otro jugador?
+        El computador decidió, de manera aleatoria, asignarlo primero al rol de <b>remitente</b>. Recuerde que el
+        remitente tiene que indicar si quiere enviar 0, 1 o 2 fichas al destinatario. Cada ficha es equivalente a 2.000
+        COP. Si desea volver a leer las instrucciones de clic en el botón azul que se encuentra en la parte superior de
+        la página. Por favor, seleccione la cantidad de fichas que quiere enviar al destinatario.
     </p>
     <p>
         {{ form.sent_amount }}
     </p>
-
 
     {% next_button %}
 {% endblock %}
