@@ -116,6 +116,6 @@ git commit -m "changed Git commands"
 git merge --no-ff total_payoff_trust
 
 git commit -m "Changed git commnads again to merge text_from_protiocol to master"
-git checkout text_from_protocol
+git checkout master
 git merge --no-ff text_from_protocol
 
