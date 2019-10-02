@@ -15,7 +15,18 @@ class Medidas(Page):
                    'barrio_seguro', 'estrato_esperado', 'elecciones', 'botella',
                    'self_perception_justicia']
 
+class the_end(Page):
+    form_model = 'player'
+    form_fields = ['e_mail']
+
+#    def vars_for_template(self):
+#        self.player.report_vars_for_database()
+
+    def is_displayed(self):
+        return True
+
 page_sequence = [
     Cuestionario,
     Medidas,
+    the_end,
 ]
