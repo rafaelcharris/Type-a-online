@@ -25,6 +25,7 @@ class Constants(BaseConstants):
     name_in_url = 'app_9_report'
     players_per_group = None
     num_rounds = 1
+    trust_token = 4000
 
 
 class Subsession(BaseSubsession):
@@ -44,6 +45,8 @@ class Subsession(BaseSubsession):
             row['trust_paying_round'] = p.participant.vars.get('paying_round')
             row['trust_t_final_payoff'] = p.participant.vars.get('t_final_payoff')
             row['trust_b_final_payoff'] = p.participant.vars.get('b_final_payoff')
+            row['report_trust_totalsum_payoff'] = p.report_trust_totalsum_payoff
+            row['report_finalfinal_payoff'] = p.report_finalfinal_payoff
             table_rows.append(row)
         return {'table_rows': table_rows}
 
@@ -57,43 +60,24 @@ class Player(BasePlayer):
     e_mail = djmodels.EmailField(verbose_name='Correo Electrónico', validators=[UnalEmailValidator()])
 
 
-    #vars for report_summary (for participants)
+    #vars for report_summary (for participants) (they get passed to database as well
     report_addition_acc_was_correct = models.IntegerField()
     report_addition_acc_payoff = models.IntegerField()
     report_addition_final_payoff = models.FloatField()
+    report_trust_totalsum_payoff = models.IntegerField()
     report_paying_round = models.IntegerField()
+    report_finalfinal_payoff = models.FloatField()
     #get others here after discussing
 
     def push_vars_to_report_summary(self):
         self.report_addition_acc_was_correct = self.participant.vars.get('addition_acc_was_correct')
         self.report_addition_acc_payoff = self.participant.vars.get('addition_acc_acc_payoff')
         self.report_addition_final_payoff = self.participant.vars.get('addition_final_payoff')
+        self.report_trust_totalsum_payoff = self.participant.vars.get('trust_totalsum_payoff')
+        self.report_finalfinal_payoff = (self.participant.vars.get('addition_final_payoff') + (self.participant.vars.get('trust_totalsum_payoff')) * Constants.trust_token)
         #more here
 
 
-    #report_participant_code = models.LongStringField()
-    #report_consent_name = models.LongStringField()
-    #report_consent_id_number = models.IntegerField()
-    #report_treatment = models.IntegerField()
-    #report_addition_acc_was_correct = models.IntegerField()
-    #report_addition_acc_acc_payoff = models.IntegerField()
-    #report_addition_final_payoff = models.FloatField()
-    #report_metarole = models.BooleanField()
-    #report_paying_round = models.IntegerField()
-    #report_sent_amount = models.IntegerField()
-    #report_receiver_belief = models.IntegerField()
-    #report_pay_receiver_belief = models.IntegerField()
-    #report_receiver_belief_shock = models.IntegerField()
-    #report_pay_receiver_belief_shock = models.IntegerField()
-    #report_sent_back_amount_if1 = models.BooleanField()
-    #report_sender_belief_if1 = models.BooleanField()
-    #report_pay_sender_belief_if1 = models.IntegerField()
-    #report_sent_back_amount_if2 = models.BooleanField()
-    #report_pay_sender_belief_if2 = models.IntegerField()
-    #report_sender_belief_shock = models.IntegerField()
-    #report_pay_sender_belief_shock = models.IntegerField()
-    #report_t_final_payoff = models.IntegerField()
-    #report_b_final_payoff = models.IntegerField()
 
     def report_vars_for_database(self):
         self.report_participant_code = self.participant.code
@@ -121,7 +105,9 @@ class Player(BasePlayer):
             'pay_sender_belief_shock',
             't_final_payoff',
             'b_final_payoff',
+            'trust_totalsum_payoff'
         ]
 
         for field in vars_fields:
             setattr(self, 'report_{}'.format(field), self.participant.vars.get(field))
+

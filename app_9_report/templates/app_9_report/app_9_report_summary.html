@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    REPORT SUMMARY
+    RESUMEN DE LA ACTIVIDAD DE HOY
 {% endblock %}
 
 {% block content %}
@@ -53,11 +53,11 @@
             </tr>
             <tr>
                 <td>Su ganancia para la segunda parte fue</td>
-                <td>XXX</td>
+                <td>{{ player.report_trust_totalsum_payoff }}</td>
             </tr>
             <tr>
                 <td>Su ganancia total del día de hoy es</td>
-                <td>XXX</td>
+                <td>{{ player.report_finalfinal_payoff }}</td>
             </tr>
         </tbody>
     </table>
