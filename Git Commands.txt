@@ -127,3 +127,5 @@ git commit -m "Added the remaining addition problems and changed num_rounds. Fix
 git commit -m "changed Git commands for mergin timer_for_add to master"
 git checkout master
 git merge --no-ff timer_for_add
+
+ git commit -m "changed values in options for send_back and blue button space"

@@ -18,7 +18,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         #'app_sequence': ['app_2_trust', 'app_9_report'],
         'app_sequence': ['app_0_consent', 'app_1_addition', 'app_2_trust', 'app_9_report'],
-        'use_browser_bots': True,
+        'use_browser_bots': False,
     },
 ]
 
