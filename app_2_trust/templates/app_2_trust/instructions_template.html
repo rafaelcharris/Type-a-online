@@ -1,0 +1,131 @@
+{% load otree staticfiles %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+<h3> Instrucciones</h3>
+
+    <p>
+        Para la primera decisión, hay un remitente y un destinatario. Antes de empezar le indicaremos si usted actuará
+        como remitente o como destinatario.
+    </p>
+    <p>
+    <img src ="{% static 'Protocol_Shocks_2.png' %}" style = "width:900px;height:350px"/>
+    </p>
+    <p>
+        La Figura 2 muestra la representación de la interacción. Al comienzo remitente y destinatario reciben dos fichas
+        cada uno. Cada ficha es equivalente a 4.000 pesos colombianos.
+    </p>
+    <p>
+        Hay dos etapas en esta interacción. En la primera etapa, es el remitente quien tomará la decisión, en la segunda
+        etapa, es el destinatario quien decide. La suma final de ganancias se determina de acuerdo con las decisiones
+        de los dos jugadores asignados aleatoriamente al mismo grupo.
+    </p>
+    <p>
+        <b>DECISIÓN DEL REMITENTE</b>
+    </p>
+    <p>
+        Primero, se explicará la decisión del remitente. El remitente decide si enviar 0 fichas, 1 ficha o 2 fichas al
+        destinatario.
+    </p>
+    <p>
+        Si el remitente no envía nada, la interacción se acaba y ambos (remitente y destinatario) se quedan con el
+        dinero asignado al inicio de la interacción. Es decir, 2 fichas para el remitente y 2 fichas para el
+        destinatario.
+    </p>
+    <p>
+        Si el remitente envía 2 fichas, nosotros los investigadores añadiremos 4 fichas así que el destinatario
+        recibirá 6 nuevas fichas.
+    </p>
+    <p>
+        Dicho de otra manera, siempre el destinatario recibirá 3 veces el número de fichas enviadas por el remitente.
+    </p>
+    <p>
+        <b>DECISIÓN DEL DESTINATARIO</b>
+    </p>
+    <p>
+        Ahora explicaremos la decisión del destinatario. El destinatario tiene que decidir si transferir fichas al
+        remitente o no transferir nada. Si no transfiere nada, el remitente se queda con la cantidad de fichas que está
+        en sus manos al final de la primera etapa. Si el destinatario decide transferir, entonces, remitente y
+        destinatario, se quedarán exactamente con la misma cantidad de fichas.
+    </p>
+    <p>
+        Veámoslo en detalle. Si el remitente envía <b>1 ficha</b> en la primera etapa, el remitente queda con 1 ficha y el
+        destinatario con 5 fichas al final de la primera etapa porque nosotros los investigadores añadiremos dos fichas
+        más. Si el destinatario decide no transferir nada, entonces, las sumas finales son: <b>1 ficha</b> para el remitente
+        y <b>5 fichas</b> para el destinatario.
+    </p>
+    <p>
+        Por el contrario, si el destinatario decide transferir, en la segunda etapa, entonces 2 fichas serán asignadas
+        al remitente. Como resultado, la suma final del remitente será de <b>3 fichas</b> (la que tenía más las dos que
+        le fueron transferidas) y la del destinatario será de <b>3 fichas</b> (5 fichas menos dos que fueron
+        transferidas).
+    </p>
+    <p>
+        Si el remitente envía <b>2 fichas</b> en la primera etapa, el remitente queda con 0 fichas y el destinatario
+        con 8 fichas al final de la primera etapa porque nosotros los investigadores añadiremos 4 fichas más.
+        Si el destinatario no transfiere nada, entonces las sumas no cambian. La suma total del remitente es de
+        <b>0 fichas</b> y la del destinatario de <b>8 fichas</b>.
+    </p>
+    <p>
+        Si el destinatario decide transferir, entonces 4 fichas serán transferidas al remitente. Como resultado,
+        el remitente tiene ahora como suma total <b>4 fichas</b> (no tenía ninguna ficha y se le transfirieron 4 fichas)
+        , el destinatario tiene una suma total de <b>4 fichas</b> (8 menos las 4 fichas que se transfirieron al
+        remitente).
+    </p>
+    <p>
+        En resumen, hay cincos escenarios posibles entre remitente y destinatario que están representados en la
+        siguiente tabla:
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Escenario</th>
+                <th scope="col">Decisión del remitente</th>
+                <th scope="col">Decisión del destinatario</th>
+                <th scope="col">Resultado para el remitente</th>
+                <th scope="col">Resultado para el destinatario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Enviar cero fichas</td>
+                <td>Se termina la interacción</td>
+                <td>2 fichas</td>
+                <td>2 fichas</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Enviar 1 ficha</td>
+                <td>No transferir fichas</td>
+                <td>1 fichas</td>
+                <td>5 fichas</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Enviar 1 ficha</td>
+                <td>Transferir fichas</td>
+                <td>3 fichas</td>
+                <td>3 fichas</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Enviar 2 fichas</td>
+                <td>No transferir fichas</td>
+                <td>0 fichas</td>
+                <td>8 fichas</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>Enviar 2 fichas</td>
+                <td>Transferir fichas</td>
+                <td>4 fichas</td>
+                <td>4 fichas</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</div>

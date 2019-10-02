@@ -23,6 +23,8 @@ class Constants(BaseConstants):
     send_choices = [0, 1, 2]
     #send_back_choices = [x*3 for x in send_choices]
 
+    instructions = 'app_2_trust/instructions_template.html'
+
 def shifter(m): # https://groups.google.com/forum/#!searchin/otree/perfect$20stranger|sort:date/otree/rciCzbTqSfQ/Sbl2-3KqAQAJ
     group_size_err_msg = 'This code will not correctly work for group size not equal 2'
     assert Constants.players_per_group == 2, group_size_err_msg

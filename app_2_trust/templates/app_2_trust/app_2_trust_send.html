@@ -7,6 +7,13 @@
 
 {% block content %}
 
+        <div class="container" >
+            <button type="button" class="btn btn-info btn-primary btn-block" data-toggle="collapse" data-target="#demo">Pulse aquí para ver nuevamente las instrucciones de la segunda actividad</button>
+            <div id="demo" class="collapse">
+                {% include Constants.instructions %}
+            </div>
+        </div>
+
     <p>
         El computador decidió, de manera aleatoria, asignarlo primero al rol de <b>remitente</b>. Recuerde que el
         remitente tiene que indicar si quiere enviar 0, 1 o 2 fichas al destinatario. Cada ficha es equivalente a 2.000

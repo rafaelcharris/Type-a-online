@@ -83,3 +83,11 @@ git commit -m "Changed text from trust receive"
 git commit -m "Created page in admin report app to show participants the results"
 git commit -m "Created -some- player variables for displaying"
 git commit -m "Passed those  -some- variables to te template. Deleted treatments on trust. Ony four additions to test"
+
+I want to create a branch (instr-butt) from the current one (text_prot):
+git checkout -b instruction_button text_from_protocol
+
+git commit -m "Pasted the instruction button on send and sendback pages"
+code to merge in a cooler way (preservinghistory) (from tex_prot pull inst_button):
+git checkout text_from_protocol
+$ git merge --no-ff instruction_button
