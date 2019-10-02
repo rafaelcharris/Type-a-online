@@ -90,4 +90,4 @@ git checkout -b instruction_button text_from_protocol
 git commit -m "Pasted the instruction button on send and sendback pages"
 code to merge in a cooler way (preservinghistory) (from tex_prot pull inst_button):
 git checkout text_from_protocol
-$ git merge --no-ff instruction_button
+git merge --no-ff instruction_button
