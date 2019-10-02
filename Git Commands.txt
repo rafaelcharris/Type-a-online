@@ -109,3 +109,4 @@ git commit -m "changed the text in the options for the trust"
 git checkout -b total_payoff_trust text_from_protocol
 
 git commit -m "created field trust_totalsum_payoff to add belief and trust and updated summary and admin_report"
+git commit -m "created field for finalfinal_payoff. Added finalfinal_payoff to database, adminreport and summary"
