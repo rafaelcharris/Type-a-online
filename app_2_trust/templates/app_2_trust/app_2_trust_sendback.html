@@ -7,6 +7,13 @@
 
 {% block content %}
 
+        <div class="container" >
+            <button type="button" class="btn btn-info btn-primary btn-block" data-toggle="collapse" data-target="#demo">Pulse aquí para ver nuevamente las instrucciones de la segunda actividad</button>
+            <div id="demo" class="collapse">
+                {% include Constants.instructions %}
+            </div>
+        </div>
+
     <p>
         El computador decidió, de manera aleatoria, asignarlo primero al rol de destinatario. El destinatario (usted)
         tiene que indicar su opción preferida en las siguientes tablas. Como el destinatario todavía no sabe cuánto el
