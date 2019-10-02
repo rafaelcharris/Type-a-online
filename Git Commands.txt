@@ -73,4 +73,6 @@ git reset --hard 30586b6a81f7da3e1a073168d9726a3ba222cb12
 to avoind some error when pushing the rolled back branch put:
 git push --all -f
 
-git commit m- "recovered Git Commands.txt from dead_end branch"
+git commit -m "recovered Git Commands.txt from dead_end branch"
+
+git commit -m "Changed text from addition pages"

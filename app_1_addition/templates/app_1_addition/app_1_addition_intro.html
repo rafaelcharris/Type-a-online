@@ -2,41 +2,54 @@
 {% load otree static %}
 
 {% block title %}
-    Instrucciones
+    Primera parte
 {% endblock %}
 
 {% block content %}
 
     <p>
-        Esta es la primera parte del estudio.
+        La primera parte del estudio consta de dos etapas.
     </p>
     <p>
-        En la pantalla de su computador aparecerán, una a la vez, sumas de cinco
-        números de dos dígitos cada una. Estas sumas son generadas por el computador de manera aleatoria. Usted deberá
-        resolver tantas sumas como pueda en dos periodos de un plazo de 4 minutos cada uno. Al finalizar cada periodo
-        usted verá en la pantalla la cantidad de respuestas correctas e incorrectas. A usted se le pagará 1000 puntos
-        por cada suma correcta en el primer periodo. Al final del primer periodo usted puede enfrentar dos eventos.
-        En el primer evento, con una probabilidad del 50%, es decir, con la misma probabilidad de que al lanzar una
-        moneda, esta salga cara, usted puede quedarse con todos los puntos que ha acumulado o perder la mitad de los
-        puntos. En el segundo evento, con una probabilidad del 50%, es decir, con la misma probabilidad de que al
-        lanzar una moneda, esta salga cara, puede que cada suma correcta en el segundo periodo siga valiendo 1000 puntos, o
-        solo 500 puntos. Esto quiere decir que usted puede verse en una situacion en donde esté en cualquiera de los dos
-        eventos, en ambos, o en ningúno.
+        En la primera etapa, en la pantalla de su computador aparecerán, una a la vez, sumas de cinco números de
+        dos dígitos cada una. Estas sumas son generadas por el computador de manera aleatoria. Usted deberá resolver
+        tantas sumas como pueda en un periodo de 4 minutos. Al finalizar el periodo, usted verá en la pantalla la
+        cantidad de respuestas correctas e incorrectas. Por cada respuesta correcta se le pagarán 1.000 puntos.
+        Terminado el tiempo, empezará la segunda etapa. En la segunda etapa puede ocurrir uno de tres eventos posibles
+        que podrían afectar sus ganancias:</p>
+    <p>
+        1)	Sus ganancias acumuladas en la primera etapa no serán afectadas de ninguna manera.
+        2)	El 80% de sus ganancias acumuladas en la primera etapa de esta tarea se destruirá.
+        3)	El 80% de sus ganancias acumuladas en la primera etapa serán apropiadas por otro participante. Este otro
+        participante ya participó en otra sesión, y al darle la oportunidad de apropiarse o no del 80% de las ganancias de alguien en esta sesión, él o ella decidió hacerlo. Es decir, si a usted le tocó este evento, nosotros nos aseguraremos de darle el 80% de sus ganancias en esta primera parte al otro participante cuando regrese para la segunda parte de actividad.
     </p>
     <p>
-        Para resolver las operaciones, si usted así lo desea, podrá escribir sus cálculos en la hoja en blanco que se
-        encuentra frente a usted. Cuanto mejor sea su desempeño, mayor será su ganancia en esta primera parte. Las
-        ganancias acumuladas en esta parte serán pagadas con seguridad al final del estudio junto con las
-        ganancias de la actividad seleccionada al azar de entre las otras cuatro actividades de la segunda parte.
+        Para resolver las operaciones, si usted así lo desea, podrá escribir sus cálculos en la hoja en blanco que se encuentra
+        frente a usted. Cuanto mejor sea su desempeño, mayor será su ganancia en esta primera parte. El resultado
+        obtenido en esta primera parte será pagado con seguridad al final del estudio junto con las ganancias del rol
+        seleccionado a pagar de la segunda parte.</p>
+    <p>
+        Por cada respuesta correcta en esta tarea usted recibirá 1.000 puntos. Al final de la actividad, los puntos que
+        constituyen su pago se convertirán a pesos colombianos. Cada punto equivale a 1 peso colombiano.
     </p>
     <p>
-        Por cada respuesta correcta en esta actividad a usted recibirá 1000 puntos. Al final del ejercicio,
-        los puntos que constituyen su pago se convertirán a pesos colombianos. Cada punto equivale a 1 peso colombiano.
+        Veamos el siguiente ejemplo representado en la imagen para mayor claridad. Suponga que usted hizo un total de
+        10 sumas correctas en la primera etapa de esta tarea y, en consecuencia, ganó un total de 10.000 puntos
+        experimentales (en la imagen cada punto azul representa 1.000 puntos experimentales). En la segunda etapa
+        usted enfrentará uno de los tres posibles eventos. Si experimenta el primer evento sus ganancias acumuladas de
+        la primera etapa se verán inalteradas, es decir, usted recibirá los 10.000 puntos experimentales. Si usted
+        experimenta el segundo evento sus ganancias acumuladas de la primera etapa se reducirán en un 80% porque serán
+        destruidos, es decir, usted recibirá 2.000 puntos experimentales porque 8.000 puntos serán destruidos.
+        Finalmente, si usted experimenta el tercer evento sus ganancias acumuladas de la primera etapa se reducirán en
+        un 80% porque un estudiante de otra sesión decidió apropiarse de estos puntos, es decir, usted recibirá 2.000
+        puntos experimentales porque 8.000 puntos experimentales serán apropiados por un participante de otra sesión.
+    </p>
+    <p>
+    <img src ="{% static 'typeB.png' %}" style = "width:800px;height:600px"/>
     </p>
     <p>
         Cuando usted esté listo para iniciar de clic en el botón “Siguiente”
     </p>
-
     {% next_button %}
 {% endblock %}
 

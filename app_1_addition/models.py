@@ -44,7 +44,7 @@ class Subsession(BaseSubsession):
 
         #loading treatments:
         if self.round_number == 1:
-            treatment = itertools.cycle([1, 2, 3])
+            treatment = itertools.cycle([3, 2, 1])
             for p in self.get_players():
                 p.treatment = next(treatment) #this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
                 p.participant.vars['treatment'] = p.treatment #this one is the one to use throught the entire code
