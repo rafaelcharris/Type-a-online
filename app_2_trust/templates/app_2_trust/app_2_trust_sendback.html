@@ -2,29 +2,32 @@
 {% load otree static %}
 
 {% block title %}
-    CONFIABILIDAD
+    SEGUNDA DECISIÓN
 {% endblock %}
 
 {% block content %}
 
     <p>
-        Usted es el jugador {{ id_in_group }}. Usted tiene {{ Constants.endowment }} fichas.
+        El computador decidió, de manera aleatoria, asignarlo primero al rol de destinatario. El destinatario (usted)
+        tiene que indicar su opción preferida en las siguientes tablas. Como el destinatario todavía no sabe cuánto el
+        remitente decidió enviarle, tiene que tomar una decisión para cada escenario posible. Por favor marque una de
+        las dos opciones en cada uno de los siguientes renglones.
     </p>
     <p>
-        Si el otro jugador le envía  {{ sent_1 }} fichas, usted quedaría con {{ if_1_efficiency }} fichas en total. <br>
-        De estas {{ if_1_efficiency }} fichas, ¿cuantas fichas compartiría con el otro jugador?
+        Para cada escenario, seleccione si quiere transferir o no trasferir al remitente una parte de las fichas:
+    </p>
+    <p>
+        <b>Escenario 1:</b> si el remitente me manda 1 ficha, entonces:
     </p>
     <p>
         {{ form.sent_back_amount_if1 }}
     </p>
     <p>
-        Si el otro jugador le envía  {{ sent_2 }} fichas, usted quedaría con {{ if_2_efficiency }} fichas en total. <br>
-        De estas {{ if_2_efficiency }} fichas, ¿cuantas fichas compartiría con el otro jugador?
+        <b>Escenario 2:</b> si el remitente me manda 2 fichas, entonces:
     </p>
     <p>
         {{ form.sent_back_amount_if2 }}
     </p>
-
 
     {% next_button %}
 {% endblock %}

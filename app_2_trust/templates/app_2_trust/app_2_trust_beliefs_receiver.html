@@ -2,22 +2,28 @@
 {% load otree static %}
 
 {% block title %}
-    BELIEFS
+    SEGUNDA DECISIÓN
 {% endblock %}
 
 {% block content %}
 
     <p>
-        <b>Como destinatario:</b>
+        Ahora nos gustaría darle la oportunidad de obtener unos cuantos pesos más. Queremos que declare sus expectativas
+        sobre el comportamiento de la persona con la cual ha sido emparejado.
     </p>
     <p>
-        Cuantas fichas cree que le envió el otro cabezón?
+        Por cada respuesta correcta, usted recibirá $500 pesos. El resultado de estas expectativas siempre se pagará,
+        incluso, cuando no salga sorteado el rol de destinatario para el pago.
+    </p>
+    <p>
+        ¿Cuántas fichas cree que le haya enviado el remitente?
     </p>
     <p>
         {{ form.receiver_belief }}
     </p>
     <p>
-        Sobre el Shock:
+        ¿Cuál de los tres eventos posibles que se podían enfrentar en la primera parte de la actividad cree usted que el
+        remitente con el que interactuó realmente enfrentó?
     </p>
     <p>
         {{ form.receiver_belief_shock }}
