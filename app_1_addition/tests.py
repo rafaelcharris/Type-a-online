@@ -2,6 +2,7 @@ from otree.api import Currency as c, currency_range
 from . import pages
 from ._builtin import Bot
 from .models import Constants
+import time
 
 
 class PlayerBot(Bot):
@@ -20,6 +21,9 @@ class PlayerBot(Bot):
             yield pages.app_1_addition_intro
             yield pages.app_1_addition_task, dict(answer = answer)
         else:
-            yield pages.app_1_addition_task, dict(answer = answer)
+            if self.player.participant.vars['expiry'] - time.time() > 0:
+                yield pages.app_1_addition_task, dict(answer = answer)
+            else:
+                yield pages.app_1_addition_announcement
         if self.round_number == Constants.num_rounds:
             yield pages.app_1_addition_announcement
