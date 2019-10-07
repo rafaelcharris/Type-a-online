@@ -19,11 +19,14 @@ class Constants(BaseConstants):
 
     endowment = 2
     factor = 3
+    money_per_belief = 500
+    money_per_trust = 4000
 
     send_choices = [0, 1, 2]
     #send_back_choices = [x*3 for x in send_choices]
 
     instructions = 'app_2_trust/instructions_template.html'
+
 
 def shifter(m): # https://groups.google.com/forum/#!searchin/otree/perfect$20stranger|sort:date/otree/rciCzbTqSfQ/Sbl2-3KqAQAJ
     group_size_err_msg = 'This code will not correctly work for group size not equal 2'
@@ -151,6 +154,7 @@ class Group(BaseGroup):
             p.b_temp_payoff = sum([0 if e is None else e for e in [p.pay_sender_belief_if1, p.pay_sender_belief_if2, p.pay_sender_belief_shock, p.pay_receiver_belief, p.pay_receiver_belief_shock]])
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS (BELIEFS-TEMP) - PLAYER_ID_INSUBSESSION ==> ", p.id_in_subsession, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - (BELIEFS-TEMP) - P.B_TEMP_PAYOFF ==> ", p.b_temp_payoff, " <== ]]")
+            print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - (BELIEFS-TEMP) - P.B_MONEY_PAYOFF ==> ", p.b_money_payoff, " <== ]]")
             print("[[ APP_2_TRUST ]] - GROUP/SET.PAYOFFS - (BELIEFS-TEMP) ###############################################################")
 
 
@@ -184,6 +188,7 @@ class Player(BasePlayer):
 
     t_temp_payoff = models.IntegerField() # payoff per round of trust
     t_final_payoff = models.IntegerField() # final payoff for trust
+    t_money_payoff = models.IntegerField() # final payoff for trust (in money)
 
     #beliefs
 
@@ -233,7 +238,8 @@ class Player(BasePlayer):
     pay_receiver_belief_shock = models.BooleanField()
 
     b_temp_payoff = models.IntegerField() # payoff per round of belief
-    b_final_payoff = models.IntegerField() # final payoff for belief
+    b_final_payoff = models.IntegerField() # final payoff for belief (in points)
+    b_money_payoff = models.IntegerField() # final payoff for belief (in money)
 
     trust_totalsum_payoff = models.IntegerField() # the sum of beliefs and decisions
 
@@ -242,9 +248,11 @@ class Player(BasePlayer):
 
         print("[[ APP_2_TRUST ]] - PLAYER/FINAL PAYOFFS (BELIEF and TRUST) - ROUND_NUMBER ==> ", self.round_number, " <== ]]")
         self.t_final_payoff = self.in_round(self.session.vars['paying_round']).t_temp_payoff
-        #self.b_final_payoff = sum(filter(None, [self.b_temp_payoff for p in self.in_rounds(1, self.round_number)]))
+        self.t_money_payoff = self.t_final_payoff * Constants.money_per_trust
         self.b_final_payoff = sum(filter(None, [self.in_round(1).b_temp_payoff, self.in_round(Constants.num_rounds).b_temp_payoff]))
-        self.trust_totalsum_payoff = (self.t_final_payoff + self.b_final_payoff)
+        self.b_money_payoff = self.b_final_payoff * Constants.money_per_belief
+
+        self.trust_totalsum_payoff = self.t_money_payoff + self.b_money_payoff
         print("[[ APP_2_TRUST ]] - PLAYER/FINAL_PAYOFFS - PLAYER_ID_INSUBSESSION ==> ", self.id_in_subsession, " <== ]]")
         print("[[ APP_2_TRUST ]] - PLAYER/FINAL_PAYOFFS - P.T_FINAL_PAYOFF ==> ", self.t_final_payoff, " <== ]]")
         print("[[ APP_2_TRUST ]] - PLAYER/T_FINAL_PAYOFF  - P.B_FINAL_PAYOFF ==> ", self.b_final_payoff, " <== ]]")
@@ -255,22 +263,10 @@ class Player(BasePlayer):
         self.participant.vars['metarole'] = self.in_round(1).metarole
         self.participant.vars['paying_round'] = self.session.vars['paying_round']
         self.participant.vars['t_final_payoff'] = self.t_final_payoff
+        self.participant.vars['t_money_payoff'] = self.t_money_payoff
         self.participant.vars['b_final_payoff'] = self.b_final_payoff
+        self.participant.vars['b_money_payoff'] = self.b_money_payoff
         self.participant.vars['trust_totalsum_payoff'] = self.trust_totalsum_payoff
-
-        # for the tests
-        self.participant.vars['sent_amount'] = self.sent_amount
-        self.participant.vars['receiver_belief'] = self.receiver_belief
-        self.participant.vars['pay_receiver_belief'] = self.pay_receiver_belief
-        self.participant.vars['receiver_belief_shock'] = self.receiver_belief_shock
-        self.participant.vars['pay_receiver_belief_shock'] = self.pay_receiver_belief_shock
-        self.participant.vars['sent_back_amount_if1'] = self.sent_back_amount_if1
-        self.participant.vars['sender_belief_if1'] = self.sender_belief_if1
-        self.participant.vars['pay_sender_belief_if1'] = self.pay_sender_belief_if1
-        self.participant.vars['sent_back_amount_if2'] = self.sent_back_amount_if2
-        self.participant.vars['pay_sender_belief_if2'] = self.pay_sender_belief_if2
-        self.participant.vars['sender_belief_shock'] = self.sender_belief_shock
-        self.participant.vars['pay_sender_belief_shock'] = self.pay_sender_belief_shock
 
         print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_TRUST.............ROUND NUMBER", self.round_number)
         print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_TRUST.............PVARS ARE", self.participant.vars)

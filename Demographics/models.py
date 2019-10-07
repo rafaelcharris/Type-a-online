@@ -3,9 +3,6 @@ from otree.api import (
     Currency as c, currency_range
 )
 
-from django.db import models as djmodels
-from django.core.validators import EmailValidator
-
 author = 'Rafael'
 
 doc = """
@@ -20,14 +17,6 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     pass
-
-
-class UnalEmailValidator(EmailValidator):
-    def validate_domain_part(self, domain_part):
-        if domain_part != 'unal.edu.co':
-            return False
-        return True
-    message = "Por favor ingrese un correo con dominio @unal.edu.co"
 
 
 class Group(BaseGroup):
@@ -46,9 +35,6 @@ def preg_cuatro(label):
     )
 
 class Player(BasePlayer):
-
-    e_mail = djmodels.EmailField(verbose_name='Correo Electrónico', validators=[UnalEmailValidator()])
-
 
     sexo =models.StringField(
         label= '¿Cuál es su sexo',

@@ -17,15 +17,15 @@
         <tbody>
             <tr>
                 <td>Cantidad de sumas correctas</td>
-                <td>{{ player.report_addition_acc_was_correct }}</td>
+                <td>{{ player.summary_addition_acc_was_correct }}</td>
             </tr>
             <tr>
                 <td>Cantidad de puntos ganados por sumas correctas</td>
-                <td>{{ player.report_addition_acc_payoff }}</td>
+                <td>{{ player.summary_addition_acc_payoff }}</td>
             </tr>
             <tr>
                 <td>Cantidad final de puntos despues de ser afectado</td>
-                <td>{{ player.report_addition_final_payoff }}</td>
+                <td>{{ player.summary_addition_final_payoff }}</td>
             </tr>
         </tbody>
         <thead>
@@ -36,14 +36,30 @@
         </thead>
         <tbody>
             <tr>
-                <td>Su ganancia para la segunda parte fue</td>
-                <td>{{ player.report_trust_totalsum_payoff }}</td>
+                <td>Sus ganancias para las decisiones de la segunda parte fueron</td>
+                <td>{{ player.summary_trust_t_money_payoff }}</td>
             </tr>
             <tr>
-                <td>Su ganancia total del día de hoy es</td>
-                <td>{{ player.report_finalfinal_payoff }}</td>
+                <td>Sus ganancias para las intenciones de la segunda parte fueron</td>
+                <td>{{ player.summary_trust_b_money_payoff }}</td>
+            </tr>
+            <tr>
+                <td>Sus ganancias para la segunda parte fueron</td>
+                <td>{{ player.summary_trust_totalsum_payoff }}</td>
             </tr>
         </tbody>
+                <thead>
+            <tr>
+                <th scope="col">Ganancia total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Su ganancia total es:</td>
+                <td>{{ player.summary_FINAL_payoff }}</td>
+            </tr>
+
     </table>
 
     {% next_button %}
