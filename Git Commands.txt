@@ -140,3 +140,6 @@ git commit -m "changed addends and answers in bots"
 
 git commit -m "several changes. Fixed payoff function. Passed variables to admin_report ok"
 git commit -m "added cuestionario_intro"
+
+git checkout -b more_corrections
+git commit -m "changed time_limit so session.config"
