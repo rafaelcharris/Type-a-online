@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Cuestionario
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Agradecemos su participación en esta investigación.
+    </p>
+    <p>
+    Mientras preparamos su pago, por favor conteste el siguiente cuestionario. Al final los llamaremos de uno en uno
+        para entregarles su pago y para que puedan retirarse del salón. Cuando los llamemos, por favor tenga a la mano
+        su cédula de ciudadania y el recibo de pago que en breve repartiremos.
+    </p>
+    <p>
+    Por favor de clic en el botón "Siguiente".
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles  %}
+    '<link href="{% static "css.css" %}" rel="stylesheet">
+{% endblock %}

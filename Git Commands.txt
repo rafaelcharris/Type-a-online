@@ -139,3 +139,4 @@ git checkout -b corrections
 git commit -m "changed addends and answers in bots"
 
 git commit -m "several changes. Fixed payoff function. Passed variables to admin_report ok"
+git commit -m "added cuestionario_intro"

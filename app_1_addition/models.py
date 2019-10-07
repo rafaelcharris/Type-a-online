@@ -18,7 +18,7 @@ class Constants(BaseConstants):
     num_rounds = 40
 
     half_way = (num_rounds/2)
-    time_limit = 15
+    time_limit = 60*4
     shock = 0.2
     piece_rate = 1000
 

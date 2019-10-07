@@ -17,8 +17,7 @@ class the_end(Page):
     form_model = 'player'
     form_fields = ['e_mail']
 
-    def is_displayed(self):
-        return True
 
-
-page_sequence = []
+page_sequence = [
+    the_end
+]

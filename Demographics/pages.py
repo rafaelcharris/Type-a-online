@@ -3,6 +3,9 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
+class cuestionario_intro(Page):
+    pass
+
 class Cuestionario(Page):
     form_model = 'player'
     form_fields = ['sexo', 'edad', 'e_civil', 'facultad','carrera',
@@ -17,6 +20,7 @@ class Medidas(Page):
 
 
 page_sequence = [
+    cuestionario_intro,
     Cuestionario,
     Medidas,
 ]
