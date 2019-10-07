@@ -13,18 +13,12 @@ class app_9_report_summary(Page):
         self.player.push_vars_to_report_summary()
 
 
-#class the_end(Page):
-#    form_model = 'player'
-#    form_fields = ['e_mail']
-#
-##    def vars_for_template(self):
-##        self.player.report_vars_for_database()
-#
-#    def is_displayed(self):
-#        return True
+class the_end(Page):
+    form_model = 'player'
+    form_fields = ['e_mail']
+
+    def is_displayed(self):
+        return True
 
 
-page_sequence = [
-    app_9_report_summary,
-    #the_end,
-]
+page_sequence = []

@@ -137,3 +137,5 @@ git merge --no-ff small_changes
 #pass changes to new branch
 git checkout -b corrections
 git commit -m "changed addends and answers in bots"
+
+git commit -m "several changes. Fixed payoff function. Passed variables to admin_report ok"

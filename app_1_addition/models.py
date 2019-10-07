@@ -18,7 +18,7 @@ class Constants(BaseConstants):
     num_rounds = 40
 
     half_way = (num_rounds/2)
-    time_limit = 60*4
+    time_limit = 15
     shock = 0.2
     piece_rate = 1000
 
@@ -130,13 +130,11 @@ class Player(BasePlayer):
 
         self.acc_was_correct = sum(filter(None, [p.was_correct for p in self.in_all_rounds()]))
         self.acc_payoff = sum([i * Constants.piece_rate for i in [p.was_correct for p in self.in_all_rounds()] if i != None])  # this creates a list multiplying every correct '1' times the piece rate and then adds it all
-        #self.acc_payoff = sum([i * self.session.config['piece_rate'] for i in [p.was_correct for p in self.in_all_rounds()]]) #this creates a list multiplying every correct '1' times the piece rate and then adds it all
 
         if self.participant.vars['treatment'] == 1:
             self.final_payoff = self.acc_payoff
         elif self.participant.vars['treatment'] == 2 or self.participant.vars['treatment'] == 3:
             self.final_payoff = self.acc_payoff * Constants.shock
-            #self.final_payoff = self.acc_payoff * self.session.config['shock']
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ TREATMENT ==> ", self.participant.vars['treatment'], " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ ACC_WAS_CORRECT ==> ", self.acc_was_correct, " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ ACC_PAYOFF ==> ", self.acc_payoff, " <== ]]]")
@@ -146,7 +144,7 @@ class Player(BasePlayer):
     def report_addition(self):
         #self.participant.vars['treatment'] = self.participant.vars['treatment']
         self.participant.vars['addition_acc_was_correct'] = self.acc_was_correct
-        self.participant.vars['addition_acc_acc_payoff'] = self.acc_payoff
+        self.participant.vars['addition_acc_payoff'] = self.acc_payoff
         self.participant.vars['addition_final_payoff'] = self.final_payoff
         print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_ADDITION.............ROUND NUMBER", self.round_number)
         print("[[ APP_1_ADDITION ]] - PLAYER - REPORT_ADDITION.............PVARS ARE", self.participant.vars)
