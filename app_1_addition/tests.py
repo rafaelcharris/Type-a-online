@@ -20,8 +20,7 @@ class PlayerBot(Bot):
 
         if self.player.round_number == 1:
             yield pages.app_1_addition_intro
-            yield pages.app_1_addition_task, dict(answer = answer)
-        if self.player.round_number >= 2 and self.player.round_number < Constants.num_rounds:
+        if 'Primera etapa' in self.html:
             yield pages.app_1_addition_task, dict(answer = answer)
         if self.player.round_number == Constants.num_rounds:
             yield pages.app_1_addition_announcement
