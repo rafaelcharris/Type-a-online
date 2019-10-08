@@ -140,3 +140,10 @@ git commit -m "changed addends and answers in bots"
 
 git commit -m "several changes. Fixed payoff function. Passed variables to admin_report ok"
 git commit -m "added cuestionario_intro"
+
+git checkout -b more_corrections
+git commit -m "changed time_limit so session.config"
+
+git commit -m "fixed bots with chris's code. It was not possible to delete the last page in trust because of the payoff fucntion"
+git checkout master
+git merge --no-ff more_corrections
