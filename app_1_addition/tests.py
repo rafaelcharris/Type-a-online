@@ -21,7 +21,7 @@ class PlayerBot(Bot):
         if self.player.round_number == 1:
             yield pages.app_1_addition_intro
             yield pages.app_1_addition_task, dict(answer = answer)
-        elif self.player.participant.vars['expiry'] - time.time() > 0.1:
+        if self.player.round_number >= 2 and self.player.round_number <= Constants.num_rounds:
             yield pages.app_1_addition_task, dict(answer = answer)
-        elif self.player.round_number == Constants.num_rounds and self.player.participant.vars['expiry'] - time.time() <= 0.1:
+        if self.player.round_number == Constants.num_rounds:
             yield pages.app_1_addition_announcement
