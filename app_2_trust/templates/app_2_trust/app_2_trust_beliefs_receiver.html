@@ -3,22 +3,29 @@
 
 {% block title %}
     {% if  subsession.round_number  ==  1  %}
-        PRIMERA DECISIÓN
+        Primera decisión
     {% elif  subsession.round_number  ==  2  %}
-        SEGUNDA DECISIÓN
+        Segunda decisión
     {% endif %}
 {% endblock %}
 
 {% block content %}
 
     <p>
-        Ahora nos gustaría darle la oportunidad de obtener unos cuantos pesos más. Queremos que declare sus expectativas
+        Ahora nos gustaría darle la oportunidad de ganar unos cuantos pesos más. Queremos que declare sus expectativas
         sobre el comportamiento de la persona con la cual ha sido emparejado.
     </p>
+    {% if  subsession.round_number  ==  1  %}
     <p>
-        Por cada respuesta correcta, usted recibirá $500 pesos. El resultado de estas expectativas siempre se pagará,
-        incluso, cuando no salga sorteado el rol de destinatario para el pago.
+        Por cada respuesta correcta, usted recibirá {{ Constants.money_per_belief }} pesos colombianos. El resultado de
+        estas expectativas siempre se pagará, incluso cuando no salga sorteada esta primera decisión para pagar.
     </p>
+    {% elif  subsession.round_number  ==  2  %}
+    <p>
+        Por cada respuesta correcta, usted recibirá {{ Constants.money_per_belief }} pesos colombianos. El resultado de
+        estas expectativas siempre se pagará, incluso cuando no salga sorteada esta segunda decisión para pagar.
+    </p>
+    {% endif %}
     <p>
         ¿Cuántas fichas cree que le haya enviado el remitente?
     </p>

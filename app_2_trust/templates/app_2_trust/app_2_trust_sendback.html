@@ -3,9 +3,9 @@
 
 {% block title %}
     {% if  subsession.round_number  ==  1  %}
-        PRIMERA DECISIÓN
+        Primera decisión
     {% elif  subsession.round_number  ==  2  %}
-        SEGUNDA DECISIÓN
+        Segunda decisión
     {% endif %}
 {% endblock %}
 
@@ -22,25 +22,25 @@
 
     {% if  subsession.round_number  ==  1  %}
         <p>
-            El computador decidió, de manera aleatoria, asignarlo primero al rol de <b>destinatario</b>. El destinatario (usted)
-            tiene que indicar su opción preferida en los siguientes escenarios. Como el destinatario todavía no sabe cuánto el
-            remitente decidió enviarle, tiene que tomar una decisión para cada escenario posible. Por favor marque una de
-            las dos opciones en cada uno de los siguientes renglones.
+            El computador decidió, de manera aleatoria, que usted fuera el <b>destinatario<b/> y el otro participante el
+            remitente. El destinatario (usted) tiene que indicar su opción preferida en los siguientes escenarios.
+            Como usted no sabe todavía cuánto el remitente decidió enviarle, tiene que tomar una decisión para cada
+            escenario posible.
         </p>
         <p>
             Para cada escenario, seleccione si quiere transferir o no trasferir al remitente una parte de las fichas:
         </p>
     {% elif  subsession.round_number  ==  2  %}
         <p>
-            Para esta segunda decisión, se seguirán las mismas reglas que antes. Habrá un remitente y un destinatario. Los que
-            antes eran remitentes ahora serán destinatarios y viceversa. Es decir, ahora usted tomará sus decisiones bajo el
-            rol de <b>destinatario</b>. Tenga en cuenta que las parejas serán diferentes. Esto quiere decir que el remitente con el
-            que usted va a interactuar será diferente a la persona con la que interactuó en la primera decisión y viceversa.
+            Para esta segunda decisión, se seguirán las mismas reglas que antes. Habrá un remitente y un destinatario.
+            Los que antes eran remitentes ahora serán destinatarios y viceversa. Es decir, ahora usted tomará sus
+            decisiones bajo el rol de <b>destinatario<b/>. Tenga en cuenta que las parejas serán diferentes. Esto quiere
+            decir que el participante con el que usted va a interactuar será diferente al participante con el que
+            interactuó en la primera decisión.
         </p>
         <p>
-            El destinatario (usted) tiene que indicar su opción preferida en los siguientes escenarios. Como el destinatario
-            todavía no sabe cuánto el remitente decidió enviarle, tiene que tomar una decisión para cada escenario posible.
-            Por favor marque una de las dos opciones en cada uno de los siguientes renglones.
+            El destinatario (usted) tiene que indicar su opción preferida en los siguientes escenarios. Como usted no
+            sabe todavía cuánto el remitente decidió enviarle, tiene que tomar una decisión para cada escenario posible.
         </p>
         <p>
             Para cada escenario, seleccione si quiere transferir o no trasferir al remitente una parte de las fichas:

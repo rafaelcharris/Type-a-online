@@ -3,34 +3,39 @@
 
 {% block title %}
     {% if  subsession.round_number  ==  1  %}
-        PRIMERA DECISIÓN
+        Primera decisión
     {% elif  subsession.round_number  ==  2  %}
-        SEGUNDA DECISIÓN
+        Segunda decisión
     {% endif %}
 {% endblock %}
 
 {% block content %}
 
     <p>
-        Ahora nos gustaría darle la oportunidad de obtener unos cuantos pesos más. Queremos que declare sus expectativas
+        Ahora nos gustaría darle la oportunidad de ganar unos cuantos pesos más. Queremos que declare sus expectativas
         sobre el comportamiento de la persona con la cual ha sido emparejado.
     </p>
+    {% if  subsession.round_number  ==  1  %}
     <p>
-        Por cada respuesta correcta, usted recibirá $500 pesos. El resultado de estas expectativas siempre se pagará,
-        incluso, cuando no salga sorteado el rol de remitente para el pago.
+        Por cada respuesta correcta, usted recibirá {{ Constants.money_per_belief }} pesos colombianos. El resultado de
+        estas expectativas siempre se pagará, incluso cuando no salga sorteada esta primera decisión para pagar.
     </p>
+    {% elif  subsession.round_number  ==  2  %}
     <p>
-        Suponga que haya enviado 1 ficha al destinatario (puede que sea lo que efectivamente hizo), ¿cree que el
-        destinatario al que fue asignado le haya trasferido una parte de sus fichas, o bien que se haya quedado con
-        todas las fichas que tenía?
+        Por cada respuesta correcta, usted recibirá {{ Constants.money_per_belief }} pesos colombianos. El resultado de
+        estas expectativas siempre se pagará, incluso cuando no salga sorteada esta segunda decisión para pagar.
+    </p>
+    {% endif %}
+    <p>
+        Suponga que usted haya enviado 1 ficha al destinatario (puede que sea lo que efectivamente hizo), ¿usted cree
+        que el destinatario le va a transferir una parte de sus fichas, o bien que se quedará con todas las fichas?
     </p>
     <p>
         {{ form.sender_belief_if1 }}
     </p>
     <p>
-        Suponga que haya enviado 2 fichas al destinatario (puede que sea lo que efectivamente hizo), ¿cree que el
-        destinatario le haya trasferido una parte de sus fichas, o bien que se haya quedado con todas las fichas que
-        tenía?
+        Suponga que usted haya enviado 2 fichas al destinatario (puede que sea lo que efectivamente hizo), ¿usted cree
+        que el destinatario le va a transferir una parte de sus fichas, o bien que se quedará con todas las fichas?
     </p>
     <p>
         {{ form.sender_belief_if2 }}
