@@ -6,10 +6,9 @@ import random, itertools
 
 
 class PlayerBot(Bot):
-    names = itertools.cycle(['Alberto', 'Bolivar', 'Carlos', 'Danilo'])
-    ids = itertools.cycle([33, 44, 55, 66])
+    names = itertools.cycle(['Alberto', 'Bolivar', 'Carlos', 'Danilo', 'Elmer', 'Facundo', 'Guillermo', 'Hernán', 'Idilio', 'Janice', 'Kimberly', 'Lola'])
 
     def play_round(self):
         yield (pages.Bienvenido)
-        yield (pages.Consent, {'nombre': next(self.names), 'id_number': next(self.ids)})
+        yield (pages.Consent, {'nombre': next(self.names), 'id_number': random.randint(18, 90)})
 
