@@ -102,7 +102,7 @@ class Player(BasePlayer):
         blank = True
     )
     violencia = preg_cuatro(
-        label = '¿Ha sido objeto de violencia directa en los últimos doce meses?'
+        label = '¿Ha sido objeto de violencia directa (física o psicológica) en los últimos doce meses?'
     )
     prob_atraco = preg_likert(
         label = 'Cuál cree que es su probabilidad de ser víctima de un atraco en los próximos 12 meses?' 
