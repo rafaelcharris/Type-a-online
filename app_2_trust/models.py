@@ -194,7 +194,7 @@ class Player(BasePlayer):
 
     sender_belief_if1 = models.BooleanField(
         choices=[
-            (False, 'Se va a quedar con todas las fichas '),
+            (False, 'Se va a quedar con todas las fichas'),
             (True, 'Me va a transferir una parte de sus fichas'),
         ],
     )

@@ -9,7 +9,7 @@
 
     <p>
         Esta es la segunda parte del estudio. Usted tendrá que tomar dos decisiones. En cada decisión interactuará con
-        una persona diferente de este salón. Ninguna de las personas con las que usted va a interactuar conocerá su
+        una persona diferente de esta sesión. Ninguna de las personas con las que usted va a interactuar conocerá su
         identidad, ni usted la de ellas. La cantidad de dinero que puede ganar en esta parte dependerá de sus decisiones
         y de las decisiones de las personas con la que sea emparejado. Recuerde que sólo se le pagará una decisión.
         Para esto, el computador, al final de esta parte, sorteará cuál de estas dos decisiones será elegida para pagar.
@@ -20,7 +20,7 @@
         Para la primera decisión de esta segunda parte hay un remitente y un destinatario. Recuerde que al inicio de
         esta sesión, tanto usted como la persona con la que va a interactuar recibieron dos fichas cada uno para esta
         parte. Es decir, no importa cual rol desempeñe, ambos participantes al inicio de la interacción tienen dos
-        fichas. Cada ficha equivale a {{ Constants.money_per_trust } pesos colombianos.
+        fichas. Cada ficha equivale a {{ Constants.money_per_trust }} pesos colombianos.
     </p>
     <p>
         Antes de empezar le indicaremos si usted actuará como remitente o como destinatario.
@@ -40,62 +40,29 @@
         <b>DECISIÓN DEL REMITENTE</b>
     </p>
     <p>
-        Primero, se explicará la decisión del remitente. El remitente decide si enviar 0 fichas, 1 ficha o 2 fichas al
+        En la primera etapa, el remitente decide si enviar 0 fichas, 1 ficha o 2 fichas al destinatario.
+    </p>
+    <p>
+        Si el remitente no envía nada, la interacción se acaba y ambos (remitente y destinatario) se quedarán con las
+        fichas asignadas al inicio de la interacción. Es decir, 2 fichas para el remitente y 2 fichas para el
         destinatario.
     </p>
     <p>
-        Si el remitente no envía nada, la interacción se acaba y ambos (remitente y destinatario) se quedan con el
-        dinero asignado al inicio de la interacción. Es decir, 2 fichas para el remitente y 2 fichas para el
-        destinatario.
-    </p>
-    <p>
-        Si el remitente envía 1 ficha al destinatario, nosotros los investigadores añadiremos 2 fichas, así que el
-        destinatario va a recibir 3 nuevas fichas.
-    </p>
-    <p>
-        Si el remitente envía 2 fichas, nosotros los investigadores añadiremos 4 fichas así que el destinatario recibirá
-        6 nuevas fichas.
-    </p>
-    <p>
-        Dicho de otra manera, siempre el destinatario recibirá 3 veces el número de fichas enviadas por el remitente.
+        Por otro lado, si el remitente decide enviar 1 o 2 fichas, nosotros los investigadores multiplicaremos esta
+        cantidad por 3 y se la daremos al destinatario, es decir, si el remitente envía 1 ficha al destinatario, el
+        destinatario recibirá 3 fichas nuevas, y si el remitente envía 2 fichas al destinatario, el destinatario
+        recibirá 6 fichas nuevas.
     </p>
     <p>
         <b>DECISIÓN DEL DESTINATARIO</b>
     </p>
     <p>
-        Ahora explicaremos la decisión del destinatario. El destinatario tiene que decidir si transferir fichas al
-        remitente o no transferir nada. Si no transfiere nada, el remitente se queda con la cantidad de fichas que está
-        en sus manos al final de la primera etapa. Si el destinatario decide transferir, entonces, remitente y
-        destinatario, se quedarán exactamente con la misma cantidad de fichas.
-    </p>
-    <p>
-        Veámoslo en detalle.
-    </p>
-    <p>
-        Si el remitente envía <b>1 ficha<b/> en la primera etapa, el remitente queda con <b>1 ficha<b/> y el destinatario
-        con <b>5 fichas<b/> al final de la primera etapa porque nosotros los investigadores añadiremos dos fichas más.
-    </p>
-    <p>
-        Si el destinatario decide no transferir <b>nada</b>, entonces, las sumas finales son: <b>1 ficha<b/> para el
-        remitente y <b>5 fichas<b/> para el destinatario.
-    </p>
-    <p>
-        Por el contrario, si el destinatario decide transferir, en la segunda etapa, entonces 2 fichas serán asignadas
-        al remitente. Como resultado, la suma final del remitente será de <b>3 fichas</b> (la que tenía más las dos que
-        le fueron transferidas) y la del destinatario será de <b>3 fichas</b> (5 fichas menos dos que fueron
-        transferidas).
-    </p>
-    <p>
-        Si el remitente envía <b>2 fichas</b> en la primera etapa, el remitente queda con 0 fichas y el destinatario
-        con 8 fichas al final de la primera etapa porque nosotros los investigadores añadiremos 4 fichas más.
-        Si el destinatario no transfiere nada, entonces las sumas no cambian. La suma total del remitente es de
-        <b>0 fichas</b> y la del destinatario de <b>8 fichas</b>.
-    </p>
-    <p>
-        Si el destinatario decide transferir, entonces 4 fichas serán transferidas al remitente. Como resultado,
-        el remitente tiene ahora como suma total <b>4 fichas</b> (no tenía ninguna ficha y se le transfirieron 4 fichas)
-        , el destinatario tiene una suma total de <b>4 fichas</b> (8 menos las 4 fichas que se transfirieron al
-        remitente).
+        En la segunda etapa, el destinatario, de la cantidad de fichas que tiene después de la primera etapa, es decir,
+        después de la decisión del remitente, tiene que decidir si transferir parte de sus fichas al remitente o no
+        transferir nada. Si no transfiere nada, tanto el remitente como el destinatario se quedarán con la cantidad de
+        fichas que estén en sus manos al final de la primera etapa. Si el destinatario decide transferir, la
+        transferencia se hará de tal manera que ambos, el remitente y el destinatario, quedarán con la misma cantidad de
+        fichas.
     </p>
     <p>
         En resumen, hay cincos escenarios posibles entre remitente y destinatario que están representados en la
@@ -149,11 +116,11 @@
             </tr>
         </tbody>
     </table>
-
     <p>
         Si tiene alguna duda, por favor levante la mano y un asistente se acercará y lo atenderá. Si no tiene dudas de
-        clic en el botón “Siguiente”. El computador sorteará si a usted le toca el rol de destinatario o remitente para
-        la primera decisión.
+        clic en el botón “Continuar”. Después de dar clic en el botón “Continuar”, el computador sorteará si usted
+        tomará primero la decisión del remitente o la decisión del destinatario. Recuerde que en cada decisión
+        interactuará con una persona diferente de esta sesión.
     </p>
 
     {% next_button %}
@@ -161,6 +128,6 @@
 
 
 {% block styles  %}
-    '<link href="{% static "css.css" %}" rel="stylesheet">
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
 

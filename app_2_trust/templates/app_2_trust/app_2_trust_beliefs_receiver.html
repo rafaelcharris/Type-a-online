@@ -3,9 +3,9 @@
 
 {% block title %}
     {% if  subsession.round_number  ==  1  %}
-        Primera decisión
+        Primera decisión (continuación)
     {% elif  subsession.round_number  ==  2  %}
-        Segunda decisión
+        Segunda decisión (continuación)
     {% endif %}
 {% endblock %}
 
@@ -27,17 +27,45 @@
     </p>
     {% endif %}
     <p>
-        ¿Cuántas fichas cree que le haya enviado el remitente?
+        ¿Cuántas fichas cree que le vaya a enviar el remitente?
     </p>
-    <p>
-        {{ form.receiver_belief }}
-    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center">0 fichas</td>
+                <td class="text-center">1 ficha</td>
+                <td class="text-center">2 fichas</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><div class="radio "><input type="radio" name="receiver_belief" value="0"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="receiver_belief" value="1"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="receiver_belief" value="2"></div></td>
+            </tr>
+        </tbody>
+    </table>
     <p>
         ¿Cuál de los tres eventos posibles que se podían enfrentar en la primera parte de la actividad cree usted que el
         remitente con el que interactuó realmente enfrentó?
     </p>
     <p>
-        {{ form.receiver_belief_shock }}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center">Creo que sus ganancias acumuladas no se vieron afectadas de ninguna manera</td>
+                <td class="text-center">Creo que el 80% de sus ganancias acumuladas fueron destruidas</td>
+                <td class="text-center">Creo que el 80% de sus ganancias acumuladas fueron apropiadas por otro participante de otra sesión</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><div class="radio "><input type="radio" name="receiver_belief_shock" value="1"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="receiver_belief_shock" value="2"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="receiver_belief_shock" value="3"></div></td>
+            </tr>
+        </tbody>
+    </table>
     </p>
 
 
@@ -45,5 +73,5 @@
 {% endblock %}
 
 {% block styles  %}
-    '<link href="{% static "css.css" %}" rel="stylesheet">
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

@@ -21,7 +21,7 @@
     </p>
     {% if  subsession.round_number  ==  1  %}
         <p>
-            El computador decidió, de manera aleatoria, que usted fuera el <b>remitente<b/> y el otro participante el
+            El computador decidió, de manera aleatoria, que usted fuera el <b>remitente </b> y el otro participante el
             destinatario. Recuerde que el remitente tiene que indicar si quiere enviar 0, 1 o 2 fichas al destinatario.
             Cada ficha es equivalente a {{ Constants.money_per_trust }} pesos colombianos. Si desea volver a leer las
             instrucciones de clic en el botón azul que se encuentra en la parte superior de la página. Por favor,
@@ -29,26 +29,39 @@
         </p>
     {% elif  subsession.round_number  ==  2  %}
         <p>
-            Para esta parte, se seguirán las mismas reglas que antes. Habrá un remitente y un destinatario. Los que
+            Para esta segunda decisión se seguirán las mismas reglas que antes. Habrá un remitente y un destinatario. Los que
             antes eran remitentes ahora serán destinatarios y viceversa. Es decir, ahora usted tomará sus decisiones
-            bajo el rol de <b>remitente<b/>. Tenga en cuenta que las parejas serán diferentes. Esto quiere decir que el
+            bajo el rol de <b>remitente</b>. Tenga en cuenta que las parejas serán diferentes. Esto quiere decir que el
             participante con el que usted va a interactuar será diferente al participante con el que interactuó en la
             primera decisión.
         </p>
         <p>
             Recuerde que el remitente tiene que indicar si quiere enviar 0, 1 o 2 fichas al destinatario. Cada ficha es
-            equivalente a {{ Constants.money_per_trust }} colombianos. Si desea volver a leer las instrucciones de clic
+            equivalente a {{ Constants.money_per_trust }} pesos colombianos. Si desea volver a leer las instrucciones de clic
             en el botón azul que se encuentra en la parte superior de la página. Por favor, seleccione la cantidad de
             fichas que quiera enviar al destinatario.
         </p>
     {% endif %}
-        <p>
-            {{ form.sent_amount }}
-        </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center">Enviar 0 fichas</td>
+                <td class="text-center">Enviar 1 ficha</td>
+                <td class="text-center">Enviar 2 fichas</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><div class="radio "><input type="radio" name="sent_amount" value="0"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="sent_amount" value="1"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="sent_amount" value="2"></div></td>
+            </tr>
+        </tbody>
+    </table>
 
     {% next_button %}
 {% endblock %}
 
 {% block styles  %}
-    '<link href="{% static "css.css" %}" rel="stylesheet">
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

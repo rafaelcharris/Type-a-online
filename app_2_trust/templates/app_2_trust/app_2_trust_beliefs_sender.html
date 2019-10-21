@@ -3,9 +3,9 @@
 
 {% block title %}
     {% if  subsession.round_number  ==  1  %}
-        Primera decisión
+        Primera decisión (continuación)
     {% elif  subsession.round_number  ==  2  %}
-        Segunda decisión
+        Segunda decisión (continuación)
     {% endif %}
 {% endblock %}
 
@@ -28,29 +28,64 @@
     {% endif %}
     <p>
         Suponga que usted haya enviado 1 ficha al destinatario (puede que sea lo que efectivamente hizo), ¿usted cree
-        que el destinatario le va a transferir una parte de sus fichas, o bien que se quedará con todas las fichas?
+        que el destinatario le va a transferir una parte de sus fichas, o bien, que se quedará con todas las fichas?
     </p>
-    <p>
-        {{ form.sender_belief_if1 }}
-    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center">Me va a transferir una parte de sus fichas</td>
+                <td class="text-center">Se va a quedar con todas las fichas</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_if1" value="True"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_if1" value="False"></div></td>
+            </tr>
+        </tbody>
+    </table>
     <p>
         Suponga que usted haya enviado 2 fichas al destinatario (puede que sea lo que efectivamente hizo), ¿usted cree
-        que el destinatario le va a transferir una parte de sus fichas, o bien que se quedará con todas las fichas?
+        que el destinatario le va a transferir una parte de sus fichas, o bien, que se quedará con todas las fichas?
     </p>
-    <p>
-        {{ form.sender_belief_if2 }}
-    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center">Me va a transferir una parte de sus fichas</td>
+                <td class="text-center">Se va a quedar con todas las fichas</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_if2" value="True"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_if2" value="False"></div></td>
+            </tr>
+        </tbody>
+    </table>
     <p>
         ¿Cuál de los tres eventos posibles que se podían enfrentar en la primera parte de la actividad cree usted que
         el destinatario con el que interactuó realmente enfrentó?
     </p>
-    <p>
-        {{ form.sender_belief_shock }}
-    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center">Creo que sus ganancias acumuladas no se vieron afectadas de ninguna manera</td>
+                <td class="text-center">Creo que el 80% de sus ganancias acumuladas fueron destruidas</td>
+                <td class="text-center">Creo que el 80% de sus ganancias acumuladas fueron apropiadas por otro participante de otra sesión</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_shock" value="1"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_shock" value="2"></div></td>
+                <td class="text-center"><div class="radio "><input type="radio" name="sender_belief_shock" value="3"></div></td>
+            </tr>
+        </tbody>
+    </table>
 
     {% next_button %}
 {% endblock %}
 
 {% block styles  %}
-    '<link href="{% static "css.css" %}" rel="stylesheet">
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
