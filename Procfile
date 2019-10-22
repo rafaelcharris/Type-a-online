@@ -1,2 +1,2 @@
-web: otree runprodserver1of2
+python web: otree runprodserver1of2
 worker: otree runprodserver2of2
