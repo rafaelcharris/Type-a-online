@@ -41,16 +41,25 @@ class Player(BasePlayer):
         choices =["Masculino", "Femenino", "Otro"],
         widget = widgets.RadioSelectHorizontal
     )
-    edad = models.IntegerField(
+    edad = models.PositiveIntegerField(
         label = '¿Cuál es su edad?',
         min = 13, max = 70
     )
-    e_civil = models.StringField(label = '¿Cuál es su estado civil?')
-    facultad = models.StringField(label = '¿Facultad?')
-    carrera = models.StringField(label = 'Carrera')
-    veces_matriculado = models.IntegerField(label = "¿Cuántas veces se ha matriculado contando el actual semestre?")
-    ed_padre = models.StringField(label = "¿Cuál es el máximo nivel de educación alcanzado por su padre?")
-    ed_madre = models.StringField(label = "¿Cuál es el máximo nivel de educación alcanzado por su madre?")
+    e_civil = models.CharField(
+        choices=['Soltera/o', 'Casada/o', 'Unión Marital de Hecho (Unión libre)', 'Viuda/o'],
+        verbose_name='¿Cuál es su estado civil?',
+    )
+    facultad = models.StringField(label = '¿ En que facultad está usted matriculado?')
+    carrera = models.StringField(label = '¿En que carrera está usted matriculado?')
+    veces_matriculado = models.IntegerField(label = "¿Cuantas matrículas ha pagado contando la de este semestre?")
+    ed_padre = models.CharField(
+        choices=['Ninguno', 'Primaria', 'Bachillerato', 'Algún semestre universitario, pero no graduado', 'Técnico', 'Universitario', 'Posgrado'],
+        verbose_name='¿Cuál es el nivel de educación de su padre?',
+    )
+    ed_madre = models.CharField(
+        choices=['Ninguno', 'Primaria', 'Bachillerato', 'Algún semestre universitario, pero no graduado', 'Técnico', 'Universitario', 'Posgrado'],
+        verbose_name='¿Cuál es el nivel de educación de su madre?',
+    )
     estrato = models.IntegerField(
         label = "De acuerdo con las facturas de sus servicios públicos, ¿cuál es el estrato de la vivienda actual donde reside?",
         choices = [1,2,3,4,5,6],
@@ -91,7 +100,7 @@ class Player(BasePlayer):
         label = "¿Algún familiar suyo ha sido objeto de asalto físico en los últimos doce meses?"
     )
     asalto_fisico_numero_familiar = models.IntegerField(
-        label='Por favor, cuántas veces:',
+        label='Por favor indique cuántas veces:',
         blank = True
     )
     confrontacion = preg_cuatro(
@@ -102,7 +111,7 @@ class Player(BasePlayer):
         blank = True
     )
     violencia = preg_cuatro(
-        label = '¿Ha sido objeto de violencia directa en los últimos doce meses?'
+        label = '¿Ha sido objeto de violencia directa (física o psicológica) en los últimos doce meses?'
     )
     prob_atraco = preg_likert(
         label = 'Cuál cree que es su probabilidad de ser víctima de un atraco en los próximos 12 meses?' 

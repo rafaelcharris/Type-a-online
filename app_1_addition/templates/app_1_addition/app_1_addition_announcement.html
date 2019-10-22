@@ -10,20 +10,25 @@
     {% if  participant.vars.treatment  ==  1  %}
         <p>
             Sus ganancias acumuladas <b>NO</b> han sido afectadas.<br>
-            Su ganancia final en esta primera parte es de <b>{{ acc_payoff }} puntos</b><br>
+            Su ganancia final en esta primera parte es de <b>{{ acc_payoff }}</b> puntos experimentales.
         </p>
     {% elif  participant.vars.treatment  ==  2  %}
         <p>
-            Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron destruidas.<br>
-            Usted había acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos.<br>
+            Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron <b>destruidas</b>.
+        </p>
+        <p>
+            Usted había acumulado <b>{{ acc_payoff }}</b> puntos experimentales, ahora tiene <b>{{ final_payoff }}</b> puntos
+            experimentales.
         </p>
     {% elif  participant.vars.treatment  ==  3  %}
         <p>
-            Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron apropiadas por otro
+            Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron <b>apropiadas</b> por otro
             participante. Este otro participante ya participó en otra sesión, y al darle la oportunidad de apropiarse
-            o no del 80% de las ganancias de alguien en esta sesión, él o ella decidió hacerlo.<br>
-            Usted habia acumulado <b>{{ acc_payoff }} puntos</b>, ahora tiene <b>{{ final_payoff }} </b> puntos</b>.
-            <br>
+            o no del 80% de las ganancias de alguien en esta sesión, él o ella decidió hacerlo.
+        </p>
+        <p>
+            Usted habia acumulado <b>{{ acc_payoff }}</b> puntos experimentales, ahora tiene <b>{{ final_payoff }}</b> puntos
+            experimentales.</b>
         </p>
     {% endif %}
 
@@ -31,5 +36,5 @@
 {% endblock %}
 
 {% block styles  %}
-    '<link href="{% static "css.css" %}" rel="stylesheet">
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

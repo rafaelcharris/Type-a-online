@@ -85,7 +85,7 @@ class Player(BasePlayer):
     was_correct = models.BooleanField()
     acc_was_correct = models.IntegerField()
     acc_payoff = models.IntegerField()
-    final_payoff = models.FloatField()
+    final_payoff = models.IntegerField()
 
     def counting_future(self):
         # For "before_next_page() in pages.py"
@@ -129,12 +129,12 @@ class Player(BasePlayer):
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ PLAYER_ID ==> ", self.id_in_group, " <== ]]]")
 
         self.acc_was_correct = sum(filter(None, [p.was_correct for p in self.in_all_rounds()]))
-        self.acc_payoff = sum([i * Constants.piece_rate for i in [p.was_correct for p in self.in_all_rounds()] if i != None])  # this creates a list multiplying every correct '1' times the piece rate and then adds it all
+        self.acc_payoff = int(sum([i * Constants.piece_rate for i in [p.was_correct for p in self.in_all_rounds()] if i != None]))  # this creates a list multiplying every correct '1' times the piece rate and then adds it all
 
         if self.participant.vars['treatment'] == 1:
-            self.final_payoff = self.acc_payoff
+            self.final_payoff = int(self.acc_payoff)
         elif self.participant.vars['treatment'] == 2 or self.participant.vars['treatment'] == 3:
-            self.final_payoff = self.acc_payoff * Constants.shock
+            self.final_payoff = int(self.acc_payoff * Constants.shock)
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ TREATMENT ==> ", self.participant.vars['treatment'], " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ ACC_WAS_CORRECT ==> ", self.acc_was_correct, " <== ]]]")
         print("[[ APP_1_ADDITION]] - PLAYER - FINAL_COUNT.............[[[ ACC_PAYOFF ==> ", self.acc_payoff, " <== ]]]")
