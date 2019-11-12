@@ -210,7 +210,7 @@ class Player(BasePlayer):
         choices=[
             (1, 'Creo que sus ganancias acumuladas no se vieron afectadas de ninguna manera'),
             (2, 'Creo que el 80% de sus ganancias acumuladas fueron destruidas'),
-            (3, 'Creo que el 80% de sus ganancias acumuladas fueron apropiadas por otro participante de otra sesión'),
+            (3, 'Creo que el 80% de sus ganancias acumuladas fueron robadas por otro participante de otra sesión'),
         ],
     )
 
@@ -230,7 +230,7 @@ class Player(BasePlayer):
         choices=[
             (1, 'Creo que sus ganancias acumuladas no se vieron afectadas de ninguna manera'),
             (2, 'Creo que el 80% de sus ganancias acumuladas fueron destruidas'),
-            (3, 'Creo que el 80% de sus ganancias acumuladas fueron apropiadas por otro participante de otra sesión'),
+            (3, 'Creo que el 80% de sus ganancias acumuladas fueron robadas por otro participante de otra sesión'),
         ],
     )
 
