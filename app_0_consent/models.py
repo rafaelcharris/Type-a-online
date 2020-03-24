@@ -28,7 +28,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     nombre = models.StringField()
     id_number = models.IntegerField()
-
+    phone = models.IntegerField()
 
     def report_consent(self):
         self.participant.vars['consent_name'] = self.nombre

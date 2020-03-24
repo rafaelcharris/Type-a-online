@@ -9,7 +9,7 @@ class Bienvenido(Page):
 class Consent(Page):
 
     form_model = 'player'
-    form_fields = ['nombre', 'id_number']
+    form_fields = ['nombre', 'id_number', 'phone']
 
     def before_next_page(self):
         self.player.report_consent()
