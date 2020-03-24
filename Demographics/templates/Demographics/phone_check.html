@@ -2,16 +2,23 @@
 {% load otree static %}
 
 {% block title %}
-    Número de celular
+    Cuestionario
 {% endblock %}
-<p>Sabemos que ya le pedimos su número de telefono, pero para estar seguros de que no vamos a cometer un error,
-le pedimos que lo escriba otra vez en el campo de abajo
+<p>
+Agradecemos su participación en esta investigación. </br>
+
+Sabemos que ya le pedimos su número de telefono, pero para estar seguros de que no vamos a cometer un error con su pago,
+    le pedimos que lo escriba otra vez en el campo de abajo:
 </p>
 
-    {% formfields%}
+    {% formfields %}
 
 {% block content %}
 
     {% next_button %}
 
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

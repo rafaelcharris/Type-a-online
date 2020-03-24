@@ -2,14 +2,18 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-
-class cuestionario_intro(Page):
-    pass
-
 class phone_check(Page):
+
     form_model = 'player'
     form_fields = ['phone']
 
+class wrong_number(Page):
+
+    form_model = 'player'
+    form_fields = ['phone']
+
+    def is_displayed(self):
+        return self.player.is_phone == False
 
 class Cuestionario(Page):
     form_model = 'player'
@@ -25,7 +29,8 @@ class Medidas(Page):
 
 
 page_sequence = [
-    cuestionario_intro,
+    phone_check,
+    wrong_number,
     Cuestionario,
     Medidas,
 ]
