@@ -39,12 +39,14 @@ class Player(BasePlayer):
     is_phone = models.BooleanField()
 
     def phone_correct(self):
-        if self.participant.vars['phone'] != self.phone:
-            return False
+        if self.participant.vars['phone'] != self.phone2:
+            print("numero incorrecto")
+            self.is_phone = False
         else:
-            return True
+            print("number ")
+            self.is_phone = True
 
-    phone = models.IntegerField()
+    phone2 = models.IntegerField(label = "por favor, escriba su número de celular sin espacios. Ejemplo: 3103312319")
 
     sexo =models.StringField(
         label= '¿Cuál es su sexo',

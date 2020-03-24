@@ -5,18 +5,18 @@ from .models import Constants
 class phone_check(Page):
 
     form_model = 'player'
-    form_fields = ['phone']
+    form_fields = ['phone2']
 
     def before_next_page(self):
-        self.player.is_phone = self.player.phone_correct
+        self.player.phone_correct()
 
 class wrong_number(Page):
 
     form_model = 'player'
-    form_fields = ['phone']
+    form_fields = ['phone2']
 
     def is_displayed(self):
-        return self.player.is_phone == False
+        return self.player.phone_correct == False
 
 class Cuestionario(Page):
     form_model = 'player'
