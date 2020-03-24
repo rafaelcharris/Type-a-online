@@ -38,9 +38,11 @@ class Player(BasePlayer):
 
     is_phone = models.BooleanField()
 
-    def error_message(self):
+    def phone_correct(self):
         if self.participant.vars['phone'] != self.phone:
-            return "Este número es diferente al que escribió al principio"
+            return False
+        else:
+            return True
 
     phone = models.IntegerField()
 

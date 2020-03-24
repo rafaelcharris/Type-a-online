@@ -7,6 +7,9 @@ class phone_check(Page):
     form_model = 'player'
     form_fields = ['phone']
 
+    def before_next_page(self):
+        self.player.is_phone = self.player.phone_correct
+
 class wrong_number(Page):
 
     form_model = 'player'
