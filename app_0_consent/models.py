@@ -30,6 +30,10 @@ class Player(BasePlayer):
     id_number = models.IntegerField()
     phone = models.IntegerField()
 
+    def error_message(self):
+        if len(self.phone) < 10:
+            return "Número incompleto"
+
     def report_consent(self):
         self.participant.vars['consent_name'] = self.nombre
         self.participant.vars['consent_id_number'] = self.id_number

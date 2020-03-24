@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Número de celular
+{% endblock %}
+<p>Sabemos que ya le pedimos su número de telefono, pero para estar seguros de que no vamos a cometer un error,
+le pedimos que lo escriba otra vez en el campo de abajo
+</p>
+
+    {% formfields%}
+
+{% block content %}
+
+    {% next_button %}
+
+{% endblock %}

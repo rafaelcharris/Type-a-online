@@ -6,6 +6,11 @@ from .models import Constants
 class cuestionario_intro(Page):
     pass
 
+class phone_check(Page):
+    form_model = 'player'
+    form_fields = ['phone']
+
+
 class Cuestionario(Page):
     form_model = 'player'
     form_fields = ['sexo', 'edad', 'e_civil', 'facultad','carrera',

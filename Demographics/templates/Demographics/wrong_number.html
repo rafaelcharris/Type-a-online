@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Número de celular erróneo
+{% endblock %}
+<p>
+    El número de celular que escribió en la página anterior no concuerda con el primer número.
+    Por favor, escriba de nuevo su número de celular:
+</p>
+
+    {% formfields%}
+
+{% block content %}
+
+    {% next_button %}
+
+{% endblock %}

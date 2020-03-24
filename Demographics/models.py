@@ -36,6 +36,14 @@ def preg_cuatro(label):
 
 class Player(BasePlayer):
 
+    is_phone = models.BooleanField()
+
+    def error_message(self):
+        if self.participant.vars['phone'] != self.phone:
+            return "Este número es diferente al que escribió al principio"
+
+    phone = models.IntegerField()
+
     sexo =models.StringField(
         label= '¿Cuál es su sexo',
         choices =["Masculino", "Femenino", "Otro"],
