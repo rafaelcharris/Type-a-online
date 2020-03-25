@@ -40,16 +40,15 @@
     </p>
     <p>La Unidad de Estudios Comportamentales y de Política Pública (UEC-CID)<br>
         Facultad de Ciencias Económicas<br>
-        Universidad Nacional de Colombia</p>
+        Universidad Nacional de Colombia
     </p>
     <p>
     </p>
-    <p>Nombre completo: {{ form.nombre }}
-    </p>
+    <p>Nombre completo: {{ form.nombre }} <br>
     Numero de documento de identidad: {{ form.id_number }} <br>
-    Número de celular (para el pago con Daviplata): {{form.phone}}
+    Número de celular (para el pago con Daviplata): {{ form.phone }}
     </p>
-
+{{form.phone.errors}}
 <button class="otree-btn-next btn btn-primary next-button otree-next-button">Acepto participar</button>
 
 {% endblock %}
