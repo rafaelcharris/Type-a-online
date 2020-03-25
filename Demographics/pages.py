@@ -15,8 +15,16 @@ class wrong_number(Page):
     form_model = 'player'
     form_fields = ['phone2']
 
+    def vars_for_template(self):
+        return dict(
+            original = self.participant.vars['phone']
+        )
+
     def is_displayed(self):
-        return self.player.phone_correct == False
+        if self.player.is_phone is False:
+            return True
+        else:
+            return False
 
 class Cuestionario(Page):
     form_model = 'player'

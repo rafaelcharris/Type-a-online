@@ -33,7 +33,11 @@
         favor no dude en contactar al equipo de la Unidad de Estudios Comportamentales y de Política Pública (UEC-CID)
         al correo electrónico uec_fcebog@unal.edu.co o al teléfono 316-5000 ext. 10346).
     </p>
-    <p>Escribiendo su nombre y su número de documento a continuación, usted declara que ha sido debidamente informado y
+    <p>
+        La única razón por la cual le pedimos su número de celular es para poder pagarle a través de Daviplata, dadas las circunstancias de salud
+    pública. En ningún momento, su número de celular será usado para relacionarlo con sus decisiones, para llamarle o enviarle información.
+    </p>
+    <p>Escribiendo su nombre, número de documento y número de celular a continuación, usted declara que ha sido debidamente informado y
         que participa a esta investigación de manera voluntaria.
     </p>
     <p>Atentamente,
@@ -46,7 +50,7 @@
     </p>
     <p>Nombre completo: {{ form.nombre }} <br>
     Numero de documento de identidad: {{ form.id_number }} <br>
-    Número de celular (para el pago con Daviplata): {{ form.phone }}
+    Número de celular sin espacio. Ejemplo:3173312318 (para el pago con Daviplata): {{ form.phone }}
     </p>
 {{form.phone.errors}}
 <button class="otree-btn-next btn btn-primary next-button otree-next-button">Acepto participar</button>

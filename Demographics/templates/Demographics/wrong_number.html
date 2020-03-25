@@ -4,14 +4,14 @@
 {% block title %}
     Número de celular erróneo
 {% endblock %}
+{% block content %}
 <p>
-    El número de celular que escribió en la página anterior no concuerda con el primer número.
-    Por favor, escriba de nuevo su número de celular:
+    El número de celular que escribió en la página anterior no concuerda con el primer número. <br>
+    El primer número fue <b>{{ original }}.</b> <br>
+
 </p>
 
     {% formfields%}
-
-{% block content %}
 
     {% next_button %}
 

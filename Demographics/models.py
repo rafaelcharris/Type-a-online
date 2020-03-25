@@ -42,11 +42,18 @@ class Player(BasePlayer):
         if self.participant.vars['phone'] != self.phone2:
             print("numero incorrecto")
             self.is_phone = False
+            print(self.is_phone)
         else:
             print("number ")
             self.is_phone = True
+            print(self.is_phone)
 
-    phone2 = models.IntegerField(label = "por favor, escriba su número de celular sin espacios. Ejemplo: 3103312319")
+    phone2 = models.IntegerField(label = "Para estar seguros de que no habrá ningún error, por favor, escriba su número de celular nuevamente. "
+                                         "Escríbalo son especios. Ejemplo: 3103312319")
+
+    def phone2_error_message(self, value):
+        if len(str(value)) != 10:
+            return "Error: el número de celular debe tener 10 dígitos"
 
     sexo =models.StringField(
         label= '¿Cuál es su sexo',
