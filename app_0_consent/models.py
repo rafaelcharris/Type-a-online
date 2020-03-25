@@ -28,7 +28,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     nombre = models.StringField()
     id_number = models.IntegerField()
-    phone = models.IntegerField(help_text = "Ejemplo: 3103312317")
+    phone = models.IntegerField()
 
     def phone_error_message(self, value):
         if len(str(value)) != 10:
