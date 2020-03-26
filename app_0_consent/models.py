@@ -37,5 +37,6 @@ class Player(BasePlayer):
     def report_consent(self):
         self.participant.vars['consent_name'] = self.nombre
         self.participant.vars['consent_id_number'] = self.id_number
+        self.participant.vars['phone'] = self.player.phone
         print("[[ APP_0_CONSENT ]] - PLAYER - CONSENT_ADMIN.............ROUND NUMBER", self.round_number)
         print("[[ APP_0_CONSENT ]] - PLAYER - CONSENT_ADMIN.............PVARS ARE", self.participant.vars)

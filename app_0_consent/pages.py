@@ -13,7 +13,6 @@ class Consent(Page):
 
     def before_next_page(self):
         self.player.report_consent()
-        self.participant.vars['phone'] = self.player.phone
 
 
 class NormalWaitPage(WaitPage):
