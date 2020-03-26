@@ -48,7 +48,7 @@ class Player(BasePlayer):
             self.is_phone = True
             print(self.is_phone)
 
-    phone2 = models.IntegerField(label = "Escríba su número de celular sin espacios. Ejemplo 3103312319") #tal vez toca cambiar este field
+    phone2 = models.StringField(label = "Escríba su número de celular sin espacios. Ejemplo 3103312319") #tal vez toca cambiar este field
 
     def phone2_error_message(self, value):
         if len(str(value)) != 10:
