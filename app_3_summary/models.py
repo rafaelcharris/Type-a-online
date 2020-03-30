@@ -28,8 +28,6 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     #primera parte:
-    summary_addition_acc_was_correct = models.IntegerField()
-    summary_addition_acc_payoff = models.IntegerField()
     summary_addition_final_payoff = models.FloatField()
 
     #segunda parte:
@@ -42,12 +40,11 @@ class Player(BasePlayer):
     summary_FINAL_payoff = models.FloatField()
 
     def push_vars_to_summary(self):
-        self.summary_addition_acc_was_correct = self.participant.vars.get('addition_acc_was_correct')
-        self.summary_addition_acc_payoff = self.participant.vars.get('addition_acc_payoff')
+        #This two should be replaced by the points in the new real effort task
+        #self.summary_addition_acc_was_correct = self.participant.vars.get('addition_acc_was_correct')
+        #self.summary_addition_acc_payoff = self.participant.vars.get('addition_acc_payoff')
         self.summary_addition_final_payoff = self.participant.vars.get('addition_final_payoff')
 
-        #self.summary_trust_role = self.participant.vars.get('addition_acc_was_correct')
-        #self.summary_trust_round_number = self.participant.vars.get('addition_acc_acc_payoff')
         self.summary_trust_t_money_payoff = self.participant.vars.get('t_money_payoff')
         self.summary_trust_b_money_payoff = self.participant.vars.get('b_money_payoff')
         self.summary_trust_totalsum_payoff = self.participant.vars.get('trust_totalsum_payoff')

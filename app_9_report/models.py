@@ -36,10 +36,6 @@ class Subsession(BaseSubsession):
             row['participant_code'] = p.participant.code
             row['consent_name'] = p.participant.vars.get('consent_name')
             row['consent_id_number'] = p.participant.vars.get('consent_id_number')
-            row['addition_treatment'] = p.participant.vars.get('treatment')
-            row['addition_acc_was_correct'] = p.participant.vars.get('addition_acc_was_correct')
-            row['addition_acc_payoff'] = p.participant.vars.get('addition_acc_payoff')
-            row['addition_final_payoff'] = p.participant.vars.get('addition_final_payoff')
             row['trust_metarole'] = p.participant.vars.get('metarole')
             row['trust_paying_round'] = p.participant.vars.get('paying_round')
             row['trust_t_money_payoff'] = p.participant.vars.get('t_money_payoff')
