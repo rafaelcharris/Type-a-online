@@ -65,6 +65,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     transcribed_text = models.LongStringField()
+    puntaje = models.IntegerField()
 
     def transcribed_text_error_message(self, transcribed_text):
         reference_text = Constants.reference_texts[self.round_number - 1]
