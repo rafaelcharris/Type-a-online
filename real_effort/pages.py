@@ -4,6 +4,16 @@ from .models import Constants, levenshtein, distance_and_ok
 from django.conf import settings
 import time
 
+class intro(Page):
+
+    def is_displayed(self):
+        return self.player.round_number == 1
+
+
+    def before_next_page(self):
+        self.participant.vars['expiry'] = time.time() + self.session.config['time_limit']
+
+
 class Transcribe(Page):
     form_model = 'player'
     form_fields = ['transcribed_text']
