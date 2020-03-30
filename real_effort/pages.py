@@ -9,10 +9,8 @@ class intro(Page):
     def is_displayed(self):
         return self.player.round_number == 1
 
-
     def before_next_page(self):
         self.participant.vars['expiry'] = time.time() + self.session.config['time_limit']
-
 
 class Transcribe(Page):
     form_model = 'player'
@@ -52,4 +50,7 @@ class Results(Page):
         return dict(table_rows=table_rows)
 
 
-page_sequence = [Transcribe, Results]
+page_sequence = [
+    intro,
+    Transcribe,
+    Results]
