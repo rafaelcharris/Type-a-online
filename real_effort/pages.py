@@ -2,11 +2,17 @@ from ._builtin import Page, WaitPage
 from otree.api import Currency as c, currency_range
 from .models import Constants, levenshtein, distance_and_ok
 from django.conf import settings
-
+import time
 
 class Transcribe(Page):
     form_model = 'player'
     form_fields = ['transcribed_text']
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
+
+    def is_displayed(self):
+        return self.participant.vars['expiry'] - time.time() > 0
 
     def vars_for_template(self):
         return dict(
@@ -28,7 +34,8 @@ class Results(Page):
                 round_number=prev_player.round_number,
                 reference_text_length=len(Constants.reference_texts[prev_player.round_number - 1]),
                 transcribed_text_length=len(prev_player.transcribed_text),
-                distance=prev_player.levenshtein_distance
+                distance=prev_player.levenshtein_distance,
+                payment = prev_player.puntaje
             )
             table_rows.append(row)
 
