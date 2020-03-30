@@ -75,6 +75,7 @@ class Player(BasePlayer):
                                        allowed_error_rate)
         if ok:
             self.levenshtein_distance = distance
+            self.puntaje = len(transcribed_text)
         else:
             if allowed_error_rate == 0:
                 return "The transcription should be exactly the same as on the image."
