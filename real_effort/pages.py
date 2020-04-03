@@ -24,7 +24,7 @@ class Transcribe(Page):
 
     def vars_for_template(self):
         return dict(
-            image_path='real_effort/paragraphs/{}.png'.format(self.round_number),
+            #image_path='real_effort/paragraphs/{}.png'.format(self.round_number),
             reference_text=Constants.reference_texts[self.round_number - 1],
             debug=settings.DEBUG,
             required_accuracy=100 * (1 - Constants.allowed_error_rates[self.round_number - 1])

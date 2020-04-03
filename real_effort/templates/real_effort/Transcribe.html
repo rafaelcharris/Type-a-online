@@ -7,16 +7,23 @@
 
 {% block content %}
 
+
+
     <p>
         Por favor, transcriba (copie) el texto que aparece a continuación en el espacio debajo.
-        Sea exacto y esté seguro de tener todos los caractéres y espacios bien.
+        Sea exacto y esté seguro de tener todos los caractéres y espacios bien:
 
     </p>
 
+<p id = "task"> <b>{{ reference_text }}</b> </p>
 
+{% comment %}
+    <!--
     <img src="{% static image_path %}"/>
-    <br><br>
+    -->
+{% endcomment %}
 
+    <br><br>
 
     {% formfield player.transcribed_text label="" %}
 
@@ -44,6 +51,11 @@
 {% endblock %}
 
 {% block scripts %}
+<style>
+    #task{
+    font-size: 25px;
+    }
+</style>
 
 <script>
     $(document).ready(function () {
