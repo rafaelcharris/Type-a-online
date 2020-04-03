@@ -44,10 +44,21 @@ def distance_and_ok(transcribed_text, reference_text, max_error_rate):
 class Constants(BaseConstants):
     name_in_url = 'real_effort'
     players_per_group = None
-
+    #Fuente del texto: https://www.thelatinlibrary.com/petronius1.html
     reference_texts = [
         "Revealed preference",
-        "Hex ton satoha egavecen. Loh ta receso minenes da linoyiy xese coreliet ocotine! Senuh asud tu bubo tixorut sola, bo ipacape le rorisin lesiku etutale saseriec niyacin ponim na. Ri arariye senayi esoced behin? Tefid oveve duk mosar rototo buc: Leseri binin nolelar sise etolegus ibosa farare. Desac eno titeda res vab no mes!",
+        "Hex ton satoha egavecen. Loh ta receso minenes da linoyiy xese coreliet ocotine! Senuh asud tu bubo tixorut sola, ",
+        "bo ipacape le rorisin lesiku etutale saseriec niyacin ponim na. Ri arariye senayi esoced behin?",
+        " Tefid oveve duk mosar rototo buc: Leseri binin nolelar sise etolegus ibosa farare. Desac eno titeda res vab no mes!",
+        "Qui inter haec nutriuntur, non magis sapere possunt quam bene olere qui in culina habitant.Pace vestra liceat",
+        "dixisse, primi omnium eloquentiam perdidistis.Levibus enim atque inanibus sonis ludibria quaedam excitando",
+        "effecistis ut corpus orationis enervaretur et caderet.Nondum iuvenes declamationibus continebantur, cum",
+        "Sophocles aut Euripides invenerunt verba quibus deberent loqui.Nondum umbraticus doctor ingenia deleverat, cum",
+        "Pindarus novemque lyrici Homericis versibus canere timuerunt.Et ne poetas quidem ad testimonium citem, certe"
+        "neque Platona neque Demosthenen ad hoc genus exercitationis accessisse video.Grandis et, ut ita dicam, pudica",
+        "oratio non est maculosa nec turgida, sed naturali pulchritudine exsurgit.Nuper ventosa istaec et enormis",
+        "loquacitas Athenas ex Asia commigravit animosque iuvenum ad magna surgentes veluti pestilenti quodam sidere",
+        "adflavit, semelque corrupta regula eloquentia stetit et obmutuit.Ad summam, quis postea Thucydidis, quis Hyperidis ad famam processit?",
     ]
 
     num_rounds = len(reference_texts)
