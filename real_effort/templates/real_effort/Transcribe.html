@@ -7,16 +7,14 @@
 
 {% block content %}
 
-
-
     <p>
         Por favor, transcriba (copie) el texto que aparece a continuación en el espacio debajo.
         Sea exacto y esté seguro de tener todos los caractéres y espacios bien:
-
     </p>
 
+<div class = "text">
 <p id = "task"> <b>{{ reference_text }}</b> </p>
-
+</div>
 {% comment %}
     <!--
     <img src="{% static image_path %}"/>
@@ -63,6 +61,14 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+.text{
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 20px;
+    background-color: rgba(45, 45, 45, 0.1);
 }
 </style>
 
