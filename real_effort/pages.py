@@ -27,7 +27,7 @@ class Transcribe(Page):
             #image_path='real_effort/paragraphs/{}.png'.format(self.round_number),
             reference_text=Constants.reference_texts[self.round_number - 1],
             debug=settings.DEBUG,
-            required_accuracy=100 * (1 - Constants.allowed_error_rates[self.round_number - 1])
+            required_accuracy = 100 * (1 - Constants.allowed_error_rate)
         )
 
 
