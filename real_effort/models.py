@@ -85,11 +85,21 @@ class Player(BasePlayer):
                                        allowed_error_rate)
         if ok:
             self.levenshtein_distance = distance
-            self.puntaje = len(transcribed_text)
         else:
             if allowed_error_rate == 0:
                 return "The transcription should be exactly the same as on the image."
             else:
                 return "This transcription appears to contain too many errors."
+
+    def payment(self):
+        if self.round_number > 1:
+            turno = self.round_number - 1
+            if turno == 1:
+                return self.puntaje
+            else :
+                self.puntaje += len(self.transcribed_text)
+                turno -= 1
+        else:
+            self.puntaje = 0
 
     levenshtein_distance = models.IntegerField()
