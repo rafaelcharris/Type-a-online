@@ -76,7 +76,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     transcribed_text = models.LongStringField()
-    puntaje = models.IntegerField()
+    puntaje = models.IntegerField(initial = 0 )
 
     def transcribed_text_error_message(self, transcribed_text):
         reference_text = Constants.reference_texts[self.round_number - 1]
@@ -92,14 +92,7 @@ class Player(BasePlayer):
                 return "This transcription appears to contain too many errors."
 
     def payment(self):
-        if self.round_number > 1:
-            turno = self.round_number - 1
-            if turno == 1:
-                return self.puntaje
-            else :
-                self.puntaje += len(self.transcribed_text)
-                turno -= 1
-        else:
-            self.puntaje = 0
+        self.puntaje += self.round_number
+
 
     levenshtein_distance = models.IntegerField()
