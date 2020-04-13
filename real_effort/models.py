@@ -91,7 +91,7 @@ class Player(BasePlayer):
                 return "This transcription appears to contain too many errors."
 
     def set_payoff(self):
-        self.payoff += sum(self.transcribed_text.split(" "))
+        self.payoff = len(self.transcribed_text) if self.transcribed_text is not None else 0
         print("current payoff = ", self.payoff)
 
     levenshtein_distance = models.IntegerField()

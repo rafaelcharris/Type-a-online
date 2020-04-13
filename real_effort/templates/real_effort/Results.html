@@ -28,6 +28,8 @@
                 <th>Length of given text</th>
                 <th>Length of text entered</th>
                 <th>Levenshtein distance</th>
+                <th>Payoff</th>
+
             </tr>
             {% for row in table_rows %}
             <tr>
@@ -35,13 +37,15 @@
                 <td>{{ row.reference_text_length }}</td>
                 <td>{{ row.transcribed_text_length }}</td>
                 <td>{{ row.distance }}</td>
+                <td>{{ row.payoff }}</td>
             </tr>
             {% endfor %}
             <tr>
                 <th><b>Final Payment</b></th>
                 <th><b>-</b></th>
                 <th><b>-</b></th>
-                <th> {{ player.payoff }}</th>
+                <th><b>-</b></th>
+                <th> {{ final_payment }}</th>
             </tr>
 
         </table>

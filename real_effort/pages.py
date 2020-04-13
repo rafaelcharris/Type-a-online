@@ -29,12 +29,10 @@ class Transcribe(Page):
             required_accuracy = 100 * (1 - Constants.allowed_error_rate)
         )
 
-    def before_next_page(self):
-        self.player.set_payoff()
-
 class Results(Page):
 
     def is_displayed(self):
+        self.player.set_payoff()
         return self.round_number == Constants.num_rounds
 
     def vars_for_template(self):
