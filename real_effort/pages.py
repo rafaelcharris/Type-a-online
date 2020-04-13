@@ -52,14 +52,19 @@ class Results(Page):
 
 class Announcement(Page):
 
-    def vars_for_template(self):
-        self.player.set_final_payoff
+    def is_displayed(self):
+        self.player.set_final_payoff()
+        return self.round_number == Constants.num_rounds
 
+    def vars_for_template(self):
         #En esta pagina payoff es el pago que tendría si no hubiera shock
         return dict(
             final_payoff = self.player.final_payoff,
             payoff = self.participant.payoff
         )
+
+    def before_next_page(self):
+        self.player.report_addition()
 
 page_sequence = [
     intro,

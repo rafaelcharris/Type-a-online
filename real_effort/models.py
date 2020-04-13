@@ -76,9 +76,7 @@ class Subsession(BaseSubsession):
                 p.treatment = next(
                     treatment)  # this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
                 p.participant.vars['treatment'] = p.treatment  # this one is the one to use throught the entire code
-
-
-#TODO creaer los treatments de los choques
+                print("PARTICIPANTS TREATEMENT IS: ", p.treatment)
 
 class Group(BaseGroup):
     pass
@@ -110,9 +108,12 @@ class Player(BasePlayer):
     final_payoff = models.IntegerField()
 
     def set_final_payoff(self):
-        self.final_payoff = self.participant.payoff*Constants.shock if self.treatment != 1 else self.participant.payoff
+        self.final_payoff = int(self.participant.payoff*Constants.shock) if self.treatment != 1 else int(self.participant.payoff)
+
+    #TODO arreglar la función de pago porque a veces aproxima a un valor.
 
     levenshtein_distance = models.IntegerField()
 
     def report_real(self):
         self.participant.vars['real_effort_payoff'] = self.final_payoff
+
