@@ -3,7 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
-from nltk.tokenize import word_tokenize
+import itertools
 
 doc = """
 This is a task that requires real effort from participants.
@@ -66,8 +66,18 @@ class Constants(BaseConstants):
     allowed_error_rate = 0.03
 
 class Subsession(BaseSubsession):
-    pass
 
+    def creating_session(self):
+        # loading treatments:
+        if self.round_number == 1:
+            treatment = itertools.cycle([3, 2, 1])
+            for p in self.get_players():
+                p.treatment = next(
+                    treatment)  # this is just to keep it for the database. the code below is the useful one because thisone does not persist between rounds or apps
+                p.participant.vars['treatment'] = p.treatment  # this one is the one to use throught the entire code
+
+
+#TODO creaer los treatments de los choques
 
 class Group(BaseGroup):
     pass
@@ -95,3 +105,6 @@ class Player(BasePlayer):
         print("current payoff = ", self.payoff)
 
     levenshtein_distance = models.IntegerField()
+
+    def report_real(self):
+        self.participant.vars['real_effort_payoff'] = self.participant.payoff
