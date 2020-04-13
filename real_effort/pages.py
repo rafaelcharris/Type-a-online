@@ -50,8 +50,11 @@ class Results(Page):
         return dict(table_rows=table_rows,
                     final_payment = self.participant.payoff)
 
+class Announcement(Page):
+    pass
 
 page_sequence = [
     intro,
     Transcribe,
-    Results]
+    Results,
+    Announcement]

@@ -64,6 +64,7 @@ class Constants(BaseConstants):
 
     num_rounds = len(reference_texts)
     allowed_error_rate = 0.03
+    shock = 0.2
 
 class Subsession(BaseSubsession):
 
@@ -100,9 +101,14 @@ class Player(BasePlayer):
             else:
                 return "This transcription appears to contain too many errors."
 
+    treatment = models.IntegerField()
+
     def set_payoff(self):
-        self.payoff = len(self.transcribed_text) if self.transcribed_text is not None else 0
+        self.payoff = len(self.transcribed_text)*Constants.shock if self.transcribed_text is not None else 0
         print("current payoff = ", self.payoff)
+
+    def set_final_payoff(self):
+        pass
 
     levenshtein_distance = models.IntegerField()
 
