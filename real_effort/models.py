@@ -115,4 +115,4 @@ class Player(BasePlayer):
     levenshtein_distance = models.IntegerField()
 
     def report_real(self):
-        self.participant.vars['real_effort_payoff'] = self.participant.payoff
+        self.participant.vars['real_effort_payoff'] = self.final_payoff

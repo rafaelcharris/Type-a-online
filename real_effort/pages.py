@@ -51,7 +51,15 @@ class Results(Page):
                     final_payment = self.participant.payoff)
 
 class Announcement(Page):
-    pass
+
+    def vars_for_template(self):
+        self.player.set_final_payoff
+
+        #En esta pagina payoff es el pago que tendría si no hubiera shock
+        return dict(
+            final_payoff = self.player.final_payoff,
+            payoff = self.participant.payoff
+        )
 
 page_sequence = [
     intro,

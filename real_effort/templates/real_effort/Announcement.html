@@ -10,14 +10,14 @@
     {% if  participant.vars.treatment  ==  1  %}
         <p>
             Sus ganancias acumuladas <b>NO</b> han sido afectadas.<br>
-            Su ganancia final en esta primera parte es de <b>{{ acc_payoff }}</b> puntos experimentales.
+            Su ganancia final en esta primera parte es de <b>{{ payoff }}</b> puntos experimentales.
         </p>
     {% else if  participant.vars.treatment  ==  2  %}
         <p>
             Sus ganancias acumuladas <b>han</b> sido afectadas. El 80% de sus ganancias fueron <b>destruidas</b>.
         </p>
         <p>
-            Usted había acumulado <b>{{ acc_payoff }}</b> puntos experimentales, ahora tiene <b>{{ final_payoff }}</b> puntos
+            Usted había acumulado <b>{{ payoff }}</b> puntos experimentales, ahora tiene <b>{{ final_payoff }}</b> puntos
             experimentales.
         </p>
     {% else % }
@@ -26,7 +26,7 @@
             o no del 80% de las ganancias de alguien en esta sesión, él o ella decidió hacerlo.
         </p>
     <p>
-            Usted habia acumulado <b>{{ acc_payoff }}</b> puntos experimentales, ahora tiene <b>{{ final_payoff }}</b> puntos
+            Usted habia acumulado <b>{{ payoff }}</b> puntos experimentales, ahora tiene <b>{{ final_payoff }}</b> puntos
             experimentales.</b>
     </p>
     {% endif %}

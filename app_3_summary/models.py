@@ -49,7 +49,7 @@ class Player(BasePlayer):
         self.summary_trust_b_money_payoff = self.participant.vars.get('b_money_payoff')
         self.summary_trust_totalsum_payoff = self.participant.vars.get('trust_totalsum_payoff')
 
-        self.summary_FINAL_payoff = self.participant.vars.get('addition_final_payoff') + self.participant.vars.get('trust_totalsum_payoff')
+        self.summary_FINAL_payoff = self.participant.vars.get('real_effort_payoff') + self.participant.vars.get('trust_totalsum_payoff')
         print("[[ APP_3_SUMMARY]] - PLAYER - PUSH_VARS_TO_SUMMARY.............--------------------------------]")
 
     def report_summary(self):
