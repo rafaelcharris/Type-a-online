@@ -56,10 +56,12 @@
         sesión decidió robar estos puntos, es decir, usted recibirá 2.000 puntos experimentales porque de los
         10.000 puntos iniciales, 8.000 puntos serán robados por un participante de otra sesión.
     </p>
-<img src ="{% static 'addition_shocks_type_a.png' %}" style = "width:800px;height:600px"/>
+<img id = "expl" src ="{% static 'addition_shocks_type_a.png' %}" style = "width:800px;height:600px"/>
     {% next_button %}
 {% endblock %}
 
 {% block styles  %}
-    <link href="{% static "css.css" %}" rel="stylesheet">
+
+<link href="{% static "css.css" %}" rel="stylesheet">
+
 {% endblock %}
