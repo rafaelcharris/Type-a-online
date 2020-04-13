@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
+from nltk.tokenize import word_tokenize
 
 doc = """
 This is a task that requires real effort from participants.
@@ -62,7 +63,6 @@ class Constants(BaseConstants):
     ]
 
     num_rounds = len(reference_texts)
-    print("This is the number of rounds " + str(num_rounds))
     allowed_error_rate = 0.03
 
 class Subsession(BaseSubsession):
@@ -76,7 +76,6 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     transcribed_text = models.LongStringField()
-    puntaje = models.IntegerField(initial = 0 )
 
     def transcribed_text_error_message(self, transcribed_text):
         reference_text = Constants.reference_texts[self.round_number - 1]
@@ -91,8 +90,8 @@ class Player(BasePlayer):
             else:
                 return "This transcription appears to contain too many errors."
 
-    def payment(self):
-        self.puntaje += self.round_number
-
+    def set_payoff(self):
+        self.payoff += sum(self.transcribed_text.split(" "))
+        print("current payoff = ", self.payoff)
 
     levenshtein_distance = models.IntegerField()

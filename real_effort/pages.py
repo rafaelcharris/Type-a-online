@@ -24,16 +24,16 @@ class Transcribe(Page):
 
     def vars_for_template(self):
         return dict(
-            #image_path='real_effort/paragraphs/{}.png'.format(self.round_number),
             reference_text=Constants.reference_texts[self.round_number - 1],
             debug=settings.DEBUG,
             required_accuracy = 100 * (1 - Constants.allowed_error_rate)
         )
 
     def before_next_page(self):
-        self.player.payment()
+        self.player.set_payoff()
 
 class Results(Page):
+
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
@@ -45,11 +45,12 @@ class Results(Page):
                 reference_text_length=len(Constants.reference_texts[prev_player.round_number - 1]),
                 transcribed_text_length= len(prev_player.transcribed_text) if prev_player.transcribed_text is not None else 0, #Intentar arreglar error
                 distance=prev_player.levenshtein_distance,
-                payment = prev_player.puntaje
+                payoff = prev_player.payoff
             )
             table_rows.append(row)
 
-        return dict(table_rows=table_rows)
+        return dict(table_rows=table_rows,
+                    final_payment = self.participant.payoff)
 
 
 page_sequence = [
