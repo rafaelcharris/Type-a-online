@@ -107,8 +107,10 @@ class Player(BasePlayer):
         self.payoff = len(self.transcribed_text)*Constants.shock if self.transcribed_text is not None else 0
         print("current payoff = ", self.payoff)
 
+    final_payoff = models.IntegerField()
+
     def set_final_payoff(self):
-        pass
+        self.final_payoff = self.participant.payoff*Constants.shock if self.treatment != 1 else self.participant.payoff
 
     levenshtein_distance = models.IntegerField()
 
